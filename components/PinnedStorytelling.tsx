@@ -9,29 +9,34 @@ gsap.registerPlugin(ScrollTrigger)
 
 export const stories = [
   {
-    title: "Protect Your Family",
-    desc: "Comprehensive health and life coverage ensuring your loved ones are never left vulnerable.",
-    img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=2000&q=80"
+    title: "Starting Your Career",
+    desc: "Building a solid financial foundation and health coverage as a young professional.",
+    img: "/insurance-premium/images/ai/story_1_career_1781532823001.png"
   },
   {
-    title: "Secure Your Future",
-    desc: "Expert guidance from 30+ years of PSU experience to build a solid financial foundation.",
-    img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=2000&q=80"
+    title: "Marriage & Family",
+    desc: "Securing your growing family's future with robust life and health insurance plans.",
+    img: "/insurance-premium/images/ai/story_2_marriage_1781532836651.png"
   },
   {
-    title: "Drive With Confidence",
-    desc: "Premium motor insurance that keeps you moving, with fast and hassle-free claim settlements.",
-    img: "https://images.unsplash.com/photo-1605478620424-2a10480432ee?auto=format&fit=crop&w=2000&q=80"
+    title: "Buying a Home",
+    desc: "Protecting your biggest investment and most cherished memories with comprehensive home coverage.",
+    img: "/insurance-premium/images/ai/story_3_home_1781532849339.png"
   },
   {
-    title: "Travel Without Worries",
-    desc: "Explore the world knowing you're protected against medical emergencies and trip cancellations.",
-    img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
+    title: "Children's Education",
+    desc: "Guaranteeing their dreams remain uninterrupted with dedicated education planning.",
+    img: "/insurance-premium/images/ai/story_4_education_1781532869133.png"
   },
   {
-    title: "Grow Your Business Safely",
+    title: "Growing Your Business",
     desc: "Customized corporate solutions designed to mitigate risks and secure your enterprise.",
-    img: "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=2000&q=80"
+    img: "/insurance-premium/images/ai/story_5_business_1781532880854.png"
+  },
+  {
+    title: "Retirement Planning",
+    desc: "Enjoying your golden years with complete peace of mind and lifetime financial security.",
+    img: "/insurance-premium/images/ai/story_6_retirement_1781532894656.png"
   }
 ]
 

@@ -46,7 +46,7 @@ export default function Founder() {
             <div className="relative">
               <div className="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-2 border-teal/20 shadow-2xl shadow-teal/10">
                 <img 
-                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=800&q=80"
+                  src="/insurance-premium/images/ai/advisor_portrait_1781532910105.png"
                   alt="Anwar Hussain Zaidi"
                   loading="lazy"
                   className="w-full h-full object-cover"

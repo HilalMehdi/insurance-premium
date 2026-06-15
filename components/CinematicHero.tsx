@@ -47,7 +47,7 @@ export default function CinematicHero() {
         className="absolute inset-0 w-full h-full"
       >
         <img 
-          src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&w=2000&q=80"
+          src="/insurance-premium/images/ai/hero_family_1781532809939.png"
           alt="BimaKavach Hero"
           loading="eager"
           fetchPriority="high"
