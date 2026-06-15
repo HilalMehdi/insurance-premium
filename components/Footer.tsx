@@ -14,9 +14,9 @@ const socialIcons = [
 ]
 
 const contactItems = [
-  { icon: Phone,  text: '1800-123-4567 (Toll Free)' },
-  { icon: Mail,   text: 'support@insureshield.in' },
-  { icon: MapPin, text: 'Mumbai, Maharashtra, India' },
+  { icon: Phone,  text: '+91 94129 50022' },
+  { icon: Mail,   text: 'zaidinia@gmail.com' },
+  { icon: MapPin, text: 'Dehradun, Uttarakhand, India' },
 ]
 
 export default function Footer() {
@@ -30,10 +30,10 @@ export default function Footer() {
               <div className="w-10 h-10 bg-gradient-to-br from-teal to-ins-blue rounded-xl flex items-center justify-center shadow-lg">
                 <Shield className="w-5 h-5 text-white" />
               </div>
-              <span className="text-xl font-bold">Insure<span className="text-teal">Shield</span></span>
+              <span className="text-xl font-bold">Bima<span className="text-teal">Kavach</span></span>
             </div>
             <p className="text-white/45 leading-relaxed mb-8 max-w-xs text-sm">
-              India's most trusted insurance comparison platform. Protecting millions of families since 2015. IRDAI licensed & regulated.
+              Expert insurance advisory led by Anwar Hussain Zaidi, a retired officer from New India Assurance with 30+ years of experience. Dehradun's most trusted insurance partner.
             </p>
             <div className="space-y-3">
               {contactItems.map(({ icon: Icon, text }) => (
@@ -60,7 +60,7 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="border-t border-white/8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/35 text-sm">© 2025 InsureShield. Licensed by IRDAI. All rights reserved.</p>
+          <p className="text-white/35 text-sm">© 2025 BimaKavach. Licensed by IRDAI. All rights reserved.</p>
           <div className="flex items-center gap-3">
             {socialIcons.map(({ label, path }) => (
               <a key={label} href="#" aria-label={label} className="w-9 h-9 glass rounded-full flex items-center justify-center hover:bg-teal/20 transition-all group">

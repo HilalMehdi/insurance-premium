@@ -6,6 +6,7 @@ import Comparison from '@/components/Comparison'
 import ClaimProcess from '@/components/ClaimProcess'
 import Testimonials from '@/components/Testimonials'
 import Partners from '@/components/Partners'
+import Founder from '@/components/Founder'
 import FAQ from '@/components/FAQ'
 import QuoteForm from '@/components/QuoteForm'
 import Footer from '@/components/Footer'
@@ -22,6 +23,7 @@ export default function Home() {
       <ClaimProcess />
       <Testimonials />
       <Partners />
+      <Founder />
       <FAQ />
       <QuoteForm />
       <Footer />

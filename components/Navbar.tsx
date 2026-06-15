@@ -35,7 +35,7 @@ export default function Navbar() {
             <Shield className="w-5 h-5 text-white" />
           </div>
           <span className="text-white font-bold text-xl tracking-tight">
-            Insure<span className="text-teal">Shield</span>
+            Bima<span className="text-teal">Kavach</span>
           </span>
         </a>
 
