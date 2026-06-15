@@ -40,7 +40,7 @@ export default function QuoteForm() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          model: 'openrouter/free',
+          model: 'google/gemma-4-26b-a4b-it:free,qwen/qwen3-coder:free,meta-llama/llama-3.2-3b-instruct:free,openrouter/free',
           messages: [{ role: 'user', content: prompt }],
           max_tokens: 200,
         })

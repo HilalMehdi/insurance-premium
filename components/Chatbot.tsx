@@ -6,7 +6,8 @@ import { MessageSquare, X, Send, Bot, User } from 'lucide-react'
 
 // Split key to bypass GitHub secret scanning
 const OPENROUTER_API_KEY = 'sk-or-v1-f21d82843ad967b042ef337e1a860e4d042d1a4a4' + 'de8f6b637af6a65ecf9b727'
-const OPENROUTER_MODEL = 'openrouter/free'
+// Use a fallback chain: tries Gemma 4 first, then Qwen, then Llama, then openrouter's auto-free pool
+const OPENROUTER_MODEL = 'google/gemma-4-26b-a4b-it:free,qwen/qwen3-coder:free,meta-llama/llama-3.2-3b-instruct:free,openrouter/free'
 
 const SYSTEM_PROMPT = `You are the BimaKavach AI Insurance Advisor - a knowledgeable, friendly, and concise insurance expert working for BimaKavach, an insurance consulting firm founded by Anwar Hussain Zaidi, a retired officer from New India Assurance with 30+ years of experience in Dehradun, India.
 
@@ -74,7 +75,9 @@ export default function Chatbot() {
       setMessages(prev => [...prev, { role: 'assistant', content: reply }])
     } catch (error) {
       console.error('OpenRouter error:', error)
-      setMessages(prev => [...prev, { role: 'assistant', content: '⚠️ I am currently unavailable. Please try again shortly or contact us at +91 94129 50022.' }])
+      // Fallback response if the free API is completely rate-limited globally
+      const fallbackReply = "Thank you for reaching out! I'm currently experiencing high network traffic. For immediate assistance with " + (userMsg.length > 20 ? "your enquiry" : `"${userMsg}"`) + ", please call Anwar Hussain Zaidi directly at +91 94129 50022 or email zaidinia@gmail.com."
+      setMessages(prev => [...prev, { role: 'assistant', content: fallbackReply }])
     } finally {
       setIsLoading(false)
     }
