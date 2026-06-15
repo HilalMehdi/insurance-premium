@@ -6,7 +6,7 @@ import { MessageSquare, X, Send, Bot, User } from 'lucide-react'
 
 // Split key to bypass GitHub secret scanning
 const OPENROUTER_API_KEY = 'sk-or-v1-f21d82843ad967b042ef337e1a860e4d042d1a4a4' + 'de8f6b637af6a65ecf9b727'
-const OPENROUTER_MODEL = 'google/gemma-3-12b-it:free'
+const OPENROUTER_MODEL = 'openrouter/free'
 
 const SYSTEM_PROMPT = `You are the BimaKavach AI Insurance Advisor - a knowledgeable, friendly, and concise insurance expert working for BimaKavach, an insurance consulting firm founded by Anwar Hussain Zaidi, a retired officer from New India Assurance with 30+ years of experience in Dehradun, India.
 
