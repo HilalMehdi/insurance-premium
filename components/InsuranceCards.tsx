@@ -1,6 +1,11 @@
 'use client'
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 import { Heart, Shield, Car, Home, Plane, Briefcase, Building2, Bike } from 'lucide-react'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const cards = [
   { icon: Heart,     label: 'Health Insurance',    desc: 'Cashless hospitalisation & comprehensive medical coverage for the whole family.', color: 'from-rose-400 to-pink-500',    bg: '#FFF1F2' },
@@ -14,10 +19,29 @@ const cards = [
 ]
 
 export default function InsuranceCards() {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const cardsRef = useRef<HTMLDivElement[]>([])
+
+  useGSAP(() => {
+    gsap.fromTo(cardsRef.current, 
+      { y: 50, scale: 0.9, opacity: 0, rotation: 2 },
+      { 
+        y: 0, scale: 1, opacity: 1, rotation: 0, 
+        duration: 0.8, 
+        stagger: 0.1, 
+        ease: 'power3.out',
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top 80%'
+        }
+      }
+    )
+  }, { scope: containerRef })
+
   return (
-    <section id="insurance" className="section-padding bg-white">
+    <section ref={containerRef} id="insurance" className="section-padding bg-white">
       <div className="max-w-7xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+        <div className="text-center mb-16">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">What We Cover</span>
           <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mt-3 mb-4">
             All Your Insurance Needs,
@@ -26,18 +50,13 @@ export default function InsuranceCards() {
           <p className="text-slate-500 text-lg max-w-xl mx-auto">
             From health to wealth — explore our complete range of insurance solutions for every stage of life.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {cards.map(({ icon: Icon, label, desc, color, bg }, i) => (
-            <motion.a
+            <div
               key={label}
-              href="#quote"
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.07 }}
-              whileHover={{ y: -8 }}
+              ref={el => { if(el) cardsRef.current[i] = el }}
               className="group relative bg-white rounded-3xl p-7 border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-400 overflow-hidden cursor-pointer"
             >
               {/* Hover bg glow */}
@@ -52,12 +71,14 @@ export default function InsuranceCards() {
               <p className="text-slate-500 text-sm leading-relaxed">{desc}</p>
 
               <div className={`mt-5 text-sm font-semibold bg-gradient-to-r ${color} bg-clip-text text-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0`}>
-                Get Quote →
+                <p className="text-white font-medium flex items-center justify-between group-hover:text-teal transition-colors">
+                  View Plans <span className="text-xl transform group-hover:translate-x-2 transition-transform">→</span>
+                </p>
               </div>
 
               {/* Bottom accent */}
               <div className={`absolute bottom-0 left-6 right-6 h-[2px] bg-gradient-to-r ${color} scale-x-0 group-hover:scale-x-100 transition-transform duration-400 rounded-full`} />
-            </motion.a>
+            </div>
           ))}
         </div>
       </div>
