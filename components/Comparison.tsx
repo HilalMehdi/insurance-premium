@@ -28,14 +28,14 @@ export default function Comparison() {
   const filtered = plans.filter(p => active === 'All' || p.category === active)
 
   return (
-    <section id="compare" className="section-padding bg-slate-50">
-      <div className="max-w-6xl mx-auto">
+    <section id="compare" className="section-padding bg-slate-50 overflow-x-hidden">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">Compare Plans</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mt-3 mb-4">
+          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             Find the <span className="gradient-text">Perfect Plan</span>
           </h2>
-          <p className="text-slate-500 text-lg">Transparent comparison — no hidden charges, no confusion.</p>
+          <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)]">Transparent comparison — no hidden charges, no confusion.</p>
         </motion.div>
 
         {/* Filter tabs */}
@@ -63,8 +63,8 @@ export default function Comparison() {
                   <span className="text-xs text-slate-400 uppercase tracking-wide">{plan.category}</span>
                 </div>
                 <div className="mb-6">
-                  <span className={`text-4xl font-bold bg-gradient-to-r ${plan.color} bg-clip-text text-transparent`}>{plan.price}</span>
-                  <span className="text-slate-400 text-sm">{plan.period}</span>
+                  <span className={`text-[clamp(2rem,5vw,2.25rem)] font-bold bg-gradient-to-r ${plan.color} bg-clip-text text-transparent`}>{plan.price}</span>
+                  <span className="text-slate-400 text-sm ml-1">{plan.period}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3 mb-6 p-4 bg-slate-50 rounded-2xl">
                   <div><p className="text-xs text-slate-400 mb-1">Coverage</p><p className="font-bold text-navy">{plan.coverage}</p></div>
@@ -78,7 +78,7 @@ export default function Comparison() {
                     </li>
                   ))}
                 </ul>
-                <a href="#quote" className={`block text-center bg-gradient-to-r ${plan.color} text-white py-3.5 rounded-2xl font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-lg`}>
+                <a href="#calculator" className={`block text-center bg-gradient-to-r ${plan.color} text-white py-3.5 rounded-2xl font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-lg`}>
                   Choose Plan
                 </a>
               </motion.div>

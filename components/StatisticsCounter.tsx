@@ -60,7 +60,7 @@ export default function StatisticsCounter() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 divide-x-0 md:divide-x divide-slate-100">
           {stats.map((stat, i) => (
             <div key={i} className="text-center px-4">
-              <div className="text-4xl md:text-6xl font-serif font-bold text-navy mb-2 flex items-center justify-center">
+              <div className="text-[clamp(2rem,6vw,3.75rem)] font-serif font-bold text-navy mb-2 flex items-center justify-center">
                 <span>{stat.prefix}</span>
                 <span ref={el => { numbersRef.current[i] = el }}>0</span>
                 <span className="text-teal">{stat.suffix}</span>

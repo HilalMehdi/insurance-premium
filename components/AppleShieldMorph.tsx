@@ -56,6 +56,30 @@ export default function AppleShieldMorph() {
         tl.to(labelsRef.current[i], { opacity: 1, y: 0, duration: 0.2 }, startTime)
       })
     })
+
+    mm.add("(max-width: 767px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=200%', // shorter pin
+          scrub: true,
+          pin: true,
+        }
+      })
+      gsap.set(iconsRef.current.slice(1), { scale: 0, opacity: 0, rotation: -90 })
+      gsap.set(labelsRef.current.slice(1), { opacity: 0, y: 20 })
+
+      const step = 1 / (icons.length - 1)
+      icons.forEach((_, i) => {
+        if (i === 0) return
+        const startTime = i * step - (step * 0.2)
+        tl.to(iconsRef.current[i - 1], { scale: 0, opacity: 0, rotation: 90, duration: 0.15 }, startTime)
+        tl.to(labelsRef.current[i - 1], { opacity: 0, y: -20, duration: 0.15 }, startTime)
+        tl.to(iconsRef.current[i], { scale: 1, opacity: 1, rotation: 0, duration: 0.2 }, startTime)
+        tl.to(labelsRef.current[i], { opacity: 1, y: 0, duration: 0.2 }, startTime)
+      })
+    })
   }, { scope: containerRef })
 
   return (
@@ -74,7 +98,7 @@ export default function AppleShieldMorph() {
             <div 
               key={i} 
               ref={el => { if(el) iconsRef.current[i] = el }}
-              className="absolute inset-0 flex items-center justify-center"
+              className="absolute inset-0 flex items-center justify-center will-change-transform"
             >
               <Item.icon className={`w-full h-full ${Item.color}`} strokeWidth={1.5} />
             </div>
@@ -90,7 +114,7 @@ export default function AppleShieldMorph() {
             <h3 
               key={i}
               ref={el => { if(el) labelsRef.current[i] = el }}
-              className="absolute w-full text-2xl md:text-4xl font-serif font-bold text-navy"
+              className="absolute w-full text-[clamp(1.5rem,5vw,2.25rem)] font-serif font-bold text-navy will-change-transform"
             >
               {Item.label}
             </h3>

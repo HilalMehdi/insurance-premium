@@ -13,30 +13,37 @@ export default function CinematicHero() {
   const textRef = useRef<HTMLDivElement>(null)
 
   useGSAP(() => {
-    // Zoom background and fade out text on scroll
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: 'bottom top',
-        scrub: 1, // Smooth scrubbing
-        pin: true,
-      }
-    })
+    let mm = gsap.matchMedia();
 
-    tl.to(bgRef.current, {
-      scale: 1.2,
-      opacity: 0.6,
-      ease: 'none'
-    }, 0)
-    
-    tl.to(textRef.current, {
-      y: -150,
-      opacity: 0,
-      scale: 0.9,
-      ease: 'none'
-    }, 0)
+    mm.add("(min-width: 768px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: 1,
+          pin: true,
+        }
+      })
+      tl.to(bgRef.current, { scale: 1.2, opacity: 0.6, ease: 'none' }, 0)
+      tl.to(textRef.current, { y: -150, opacity: 0, scale: 0.9, ease: 'none' }, 0)
+    });
 
+    mm.add("(max-width: 767px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+          pin: true,
+        }
+      })
+      tl.to(bgRef.current, { scale: 1.05, opacity: 0.8, ease: 'none' }, 0)
+      tl.to(textRef.current, { y: -50, opacity: 0, ease: 'none' }, 0)
+    });
+
+    return () => mm.revert();
   }, { scope: containerRef })
 
   return (
@@ -44,7 +51,7 @@ export default function CinematicHero() {
       {/* Background Image */}
       <div 
         ref={bgRef}
-        className="absolute inset-0 w-full h-full"
+        className="absolute inset-0 w-full h-full will-change-transform"
       >
         <img 
           src="/insurance-premium/images/ai/hero_family_1781532809939.png"
@@ -57,15 +64,15 @@ export default function CinematicHero() {
       </div>
 
       {/* Hero Content */}
-      <div ref={textRef} className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-20">
+      <div ref={textRef} className="relative z-10 text-center px-4 md:px-6 max-w-4xl mx-auto pt-20 will-change-transform">
         <span className="inline-block px-4 py-1.5 rounded-full border border-teal/30 bg-teal/10 text-teal text-sm font-semibold tracking-wider uppercase mb-6 shadow-[0_0_15px_rgba(20,184,166,0.3)]">
           Redefining Protection
         </span>
-        <h1 className="text-5xl md:text-7xl font-serif font-bold text-white leading-tight mb-6">
+        <h1 className="text-[clamp(2.75rem,8vw,4.5rem)] font-serif font-bold text-white leading-[1.1] mb-6">
           Protect What <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal to-blue-400">Matters Most</span>
         </h1>
-        <p className="text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+        <p className="text-[clamp(1rem,4vw,1.25rem)] text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
           Experience a new standard of luxury insurance advisory. Tailored plans, absolute security, and peace of mind for you and your family.
         </p>
       </div>

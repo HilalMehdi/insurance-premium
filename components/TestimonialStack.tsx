@@ -89,26 +89,26 @@ export default function TestimonialStack() {
 
   return (
     <section ref={containerRef} className="py-24 bg-white overflow-hidden">
-      <div className="max-w-3xl mx-auto px-6 relative h-[400px] md:h-[500px]">
+      <div className="max-w-3xl mx-auto px-4 md:px-6 relative md:h-[500px]">
         
         <div className="text-center mb-12 relative z-10">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-navy">
+          <h2 className="text-[clamp(2rem,6vw,3rem)] font-serif font-bold text-navy leading-tight">
             Client <span className="text-teal">Stories</span>
           </h2>
         </div>
 
-        <div className="relative w-full h-[300px] md:h-[350px]">
+        <div className="relative w-full flex flex-col md:block gap-6 md:h-[350px]">
           {testimonials.map((t, i) => (
             <div 
               key={i}
               ref={el => { if(el) cardsRef.current[i] = el }}
-              className={`absolute inset-0 w-full rounded-3xl border border-slate-100 p-8 md:p-12 shadow-2xl flex flex-col justify-center ${t.color}`}
+              className={`relative md:absolute md:inset-0 w-full rounded-3xl border border-slate-100 p-8 md:p-12 shadow-2xl flex flex-col justify-center will-change-transform ${t.color}`}
               style={{ zIndex: i }}
             >
               <div className="flex gap-1 mb-6">
                 {[1,2,3,4,5].map(s => <Star key={s} className="w-5 h-5 text-amber-400 fill-amber-400" />)}
               </div>
-              <p className="text-lg md:text-xl text-navy leading-relaxed font-serif italic mb-8">
+              <p className="text-[clamp(1rem,4vw,1.25rem)] text-navy leading-relaxed font-serif italic mb-8">
                 "{t.text}"
               </p>
               <div>

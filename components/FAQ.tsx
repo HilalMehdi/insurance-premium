@@ -20,7 +20,7 @@ export default function FAQ() {
       <div className="max-w-4xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">FAQ</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mt-3 mb-4">
+          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             Got <span className="gradient-text">Questions?</span>
           </h2>
           <p className="text-slate-500 text-lg">Everything you need to know about insurance with InsureShield.</p>

@@ -45,7 +45,7 @@ export default function HorizontalScroll() {
     <section ref={sectionRef} className="h-screen w-full bg-slate-50 flex flex-col justify-center overflow-hidden py-20">
       
       <div className="px-6 md:px-20 mb-12 flex-shrink-0">
-        <h2 className="text-4xl md:text-5xl font-serif font-bold text-navy">
+        <h2 className="text-[clamp(2rem,6vw,3rem)] font-serif font-bold text-navy leading-tight">
           Why Choose <span className="text-teal">BimaKavach</span>
         </h2>
         <p className="text-slate-500 mt-4 max-w-xl text-lg">
@@ -67,8 +67,8 @@ export default function HorizontalScroll() {
               <card.icon className="w-7 h-7 text-teal" />
             </div>
             <div>
-              <h3 className="text-2xl font-bold text-navy mb-3">{card.title}</h3>
-              <p className="text-slate-500 leading-relaxed">{card.desc}</p>
+              <h3 className="text-[clamp(1.25rem,4vw,1.5rem)] font-bold text-navy mb-3">{card.title}</h3>
+              <p className="text-[clamp(0.9rem,3vw,1rem)] text-slate-500 leading-relaxed">{card.desc}</p>
             </div>
           </div>
         ))}

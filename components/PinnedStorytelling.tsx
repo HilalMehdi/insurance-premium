@@ -86,6 +86,34 @@ export default function PinnedStorytelling() {
       })
     })
 
+    mm.add("(max-width: 767px)", () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: 'top top',
+          end: '+=300%', // shorter pin for mobile
+          scrub: true,
+          pin: true,
+        }
+      })
+
+      tl.to(progressRef.current, { scaleX: 1, ease: 'none' }, 0)
+      gsap.set(imagesRef.current.slice(1), { opacity: 0 })
+      gsap.set(textsRef.current.slice(1), { opacity: 0, y: 20 })
+
+      const step = 1 / (stories.length - 1)
+      
+      stories.forEach((_, i) => {
+        if (i === 0) return
+        
+        const startTime = i * step - (step * 0.2)
+        tl.to(imagesRef.current[i - 1], { opacity: 0, duration: 0.1 }, startTime)
+        tl.to(textsRef.current[i - 1], { opacity: 0, y: -20, duration: 0.1 }, startTime)
+        tl.to(imagesRef.current[i], { opacity: 1, duration: 0.2 }, startTime)
+        tl.to(textsRef.current[i], { opacity: 1, y: 0, duration: 0.2 }, startTime)
+      })
+    })
+
   }, { scope: containerRef })
 
   return (
@@ -97,13 +125,13 @@ export default function PinnedStorytelling() {
           <div 
             key={i}
             ref={el => { if(el) imagesRef.current[i] = el }}
-            className="absolute inset-0 w-full h-full"
+            className="absolute inset-0 w-full h-full will-change-transform"
           >
             <img 
               src={story.img}
               alt={story.title}
               loading="lazy"
-              className="absolute inset-0 w-full h-full object-cover transition-opacity"
+              className="absolute inset-0 w-full h-full object-cover transition-opacity will-change-transform"
             />
             <div className="absolute inset-0 bg-navy/70 backdrop-blur-[2px]"></div>
           </div>
@@ -117,12 +145,12 @@ export default function PinnedStorytelling() {
             <div 
               key={i}
               ref={el => { if(el) textsRef.current[i] = el }}
-              className="absolute w-full"
+              className="absolute w-full will-change-transform px-4"
             >
-              <h2 className="text-4xl md:text-6xl font-serif font-bold text-white mb-4">
+              <h2 className="text-[clamp(2rem,6vw,3.75rem)] font-serif font-bold text-white mb-4">
                 {story.title}
               </h2>
-              <p className="text-lg text-white/70 font-light max-w-2xl mx-auto">
+              <p className="text-[clamp(1rem,4vw,1.125rem)] text-white/70 font-light max-w-2xl mx-auto">
                 {story.desc}
               </p>
             </div>
@@ -138,10 +166,7 @@ export default function PinnedStorytelling() {
         ></div>
       </div>
 
-      {/* Mobile Fallback - Static list */}
-      <div className="md:hidden absolute inset-0 z-30 bg-navy overflow-y-auto hidden">
-         {/* This ensures mobile users still see content if JS fails or media query excludes them */}
-      </div>
+      {/* Mobile Fallback Removed since we now animate on mobile */}
     </section>
   )
 }

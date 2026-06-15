@@ -169,10 +169,10 @@ export default function PremiumCalculator() {
             <span className="text-teal font-semibold text-sm uppercase tracking-widest mb-4 flex items-center gap-2">
               <Sparkles className="w-4 h-4" /> Live Calculator
             </span>
-            <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mb-6 leading-tight">
+            <h2 className="font-serif text-[clamp(2.5rem,6vw,3rem)] font-bold text-navy mb-6 leading-tight">
               Estimate Your Premium in <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal to-blue-500">Seconds.</span>
             </h2>
-            <p className="text-slate-500 text-lg mb-10 leading-relaxed">
+            <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)] mb-10 leading-relaxed">
               Adjust the parameters to get an instant, personalized premium estimate tailored to your exact needs. No paperwork. No waiting.
             </p>
 
@@ -244,7 +244,7 @@ export default function PremiumCalculator() {
                       <div className="relative">
                         <select 
                           {...field}
-                          className="w-full appearance-none bg-slate-50 border border-slate-100 rounded-2xl py-4 pl-5 pr-12 text-navy font-semibold focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all cursor-pointer"
+                          className="w-full appearance-none bg-slate-50 border border-slate-100 rounded-2xl py-4 pl-5 pr-12 text-navy text-base font-semibold focus:outline-none focus:ring-2 focus:ring-teal/20 focus:border-teal transition-all cursor-pointer"
                         >
                           {INSURANCE_TYPES.map(t => <option key={t} value={t}>{t}</option>)}
                         </select>
@@ -392,7 +392,7 @@ export default function PremiumCalculator() {
                     <div>
                       <p className="text-white/60 text-sm font-medium mb-1 uppercase tracking-wider">Est. Annual Premium</p>
                       <div className="flex items-baseline gap-2">
-                        <span className="text-4xl md:text-5xl font-serif font-bold text-white">
+                        <span className="text-[clamp(2rem,6vw,3rem)] font-serif font-bold text-white leading-none">
                           ₹<AnimatedNumber value={premiumData.finalYearly} />
                         </span>
                         <span className="text-white/50">/ year</span>

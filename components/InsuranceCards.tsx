@@ -39,15 +39,15 @@ export default function InsuranceCards() {
   }, { scope: containerRef })
 
   return (
-    <section ref={containerRef} id="insurance" className="section-padding bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section ref={containerRef} id="insurance" className="section-padding bg-white overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-16">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">What We Cover</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mt-3 mb-4">
+          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             All Your Insurance Needs,
             <span className="gradient-text block">One Trusted Partner</span>
           </h2>
-          <p className="text-slate-500 text-lg max-w-xl mx-auto">
+          <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)] max-w-xl mx-auto">
             From health to wealth — explore our complete range of insurance solutions for every stage of life.
           </p>
         </div>
@@ -57,7 +57,7 @@ export default function InsuranceCards() {
             <div
               key={label}
               ref={el => { if(el) cardsRef.current[i] = el }}
-              className="group relative bg-white rounded-3xl p-7 border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-400 overflow-hidden cursor-pointer"
+              className="group relative bg-white rounded-3xl p-7 border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-400 overflow-hidden cursor-pointer will-change-transform"
             >
               {/* Hover bg glow */}
               <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-400 rounded-3xl`} />

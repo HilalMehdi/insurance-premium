@@ -60,7 +60,7 @@ export default function QuoteForm() {
       <div className="max-w-3xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">Get a Quote</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mt-3 mb-4">
+          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             Your Free Quote in <span className="gradient-text block">60 Seconds</span>
           </h2>
         </motion.div>
@@ -88,7 +88,7 @@ export default function QuoteForm() {
                 <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Check className="w-10 h-10 text-success" />
                 </div>
-                <h3 className="font-serif text-3xl font-bold text-navy mb-3">You're All Set! 🎉</h3>
+                <h3 className="font-serif text-[clamp(1.5rem,5vw,1.875rem)] font-bold text-navy mb-3">You're All Set! 🎉</h3>
                 <p className="text-slate-500 text-lg max-w-sm mx-auto mb-8">Our insurance advisor will call you within 30 minutes with personalised quotes.</p>
                 
                 {/* AI Response Box */}
@@ -138,7 +138,7 @@ export default function QuoteForm() {
                     <div key={k}>
                       <label className="block text-sm font-semibold text-slate-600 mb-2">{lbl}</label>
                       <input type={t} placeholder={ph} value={form[k as keyof typeof form]} onChange={e => upd(k, e.target.value)}
-                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition-all text-navy"
+                        className="w-full px-4 py-3 rounded-xl border border-slate-200 focus:border-teal focus:ring-2 focus:ring-teal/20 outline-none transition-all text-navy text-base"
                       />
                     </div>
                   ))}

@@ -28,7 +28,7 @@ export default function Founder() {
           className="text-center mb-16"
         >
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">Meet the Expert</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mt-3">
+          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-white mt-3">
             The Principal <span className="gradient-text">Advisor</span>
           </h2>
         </motion.div>
@@ -57,7 +57,7 @@ export default function Founder() {
                 transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
                 className="absolute -bottom-6 -right-6 w-28 h-28 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex flex-col items-center justify-center shadow-2xl shadow-amber-500/30 text-navy text-center"
               >
-                <span className="text-3xl font-bold leading-none">30+</span>
+                <span className="text-[clamp(1.5rem,4vw,1.875rem)] font-bold leading-none">30+</span>
                 <span className="text-xs font-semibold mt-1 leading-tight px-2">Years of<br />Excellence</span>
               </motion.div>
 
@@ -76,7 +76,7 @@ export default function Founder() {
           >
             <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-4 mb-6">
               <div>
-                <h3 className="font-serif text-3xl font-bold text-white mb-1">Anwar Hussain Zaidi</h3>
+                <h3 className="font-serif text-[clamp(1.5rem,5vw,1.875rem)] font-bold text-white mb-1">Anwar Hussain Zaidi</h3>
                 <p className="text-teal font-semibold text-sm uppercase tracking-widest">
                   Founder &amp; Principal Insurance Advisor
                 </p>
