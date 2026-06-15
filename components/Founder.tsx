@@ -45,10 +45,12 @@ export default function Founder() {
             {/* Portrait frame */}
             <div className="relative">
               <div className="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-2 border-teal/20 shadow-2xl shadow-teal/10">
-                <div 
-                  className="w-full h-full bg-cover bg-center"
-                  style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1649954459557-f77663765a48?auto=format&fit=crop&w=800&q=80")' }}
-                ></div>
+                <img 
+                  src="https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&w=800&q=80"
+                  alt="Anwar Hussain Zaidi"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               {/* Experience badge */}

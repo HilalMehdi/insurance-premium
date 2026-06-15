@@ -4,8 +4,8 @@ import Chatbot from '@/components/Chatbot'
 import SmoothScroll from '@/components/SmoothScroll'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
-const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
+const inter = Inter({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-inter', display: 'swap' })
+const playfair = Playfair_Display({ subsets: ['latin'], weight: ['400', '600', '700'], variable: '--font-playfair', display: 'swap' })
 
 export const metadata: Metadata = {
   title: 'BimaKavach — Protect What Matters Most',

@@ -7,31 +7,31 @@ import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const stories = [
+export const stories = [
   {
     title: "Protect Your Family",
     desc: "Comprehensive health and life coverage ensuring your loved ones are never left vulnerable.",
-    img: "https://plus.unsplash.com/premium_photo-1682092603217-488950bb5500?auto=format&fit=crop&w=2000&q=80"
+    img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=2000&q=80"
   },
   {
     title: "Secure Your Future",
-    desc: "Robust life insurance and wealth protection plans tailored for long-term peace of mind.",
-    img: "https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?auto=format&fit=crop&w=2000&q=80"
+    desc: "Expert guidance from 30+ years of PSU experience to build a solid financial foundation.",
+    img: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=2000&q=80"
   },
   {
     title: "Drive With Confidence",
-    desc: "Premium motor insurance with zero depreciation and rapid claim settlement.",
-    img: "https://images.unsplash.com/photo-1707311381855-28f2acd90b50?auto=format&fit=crop&w=2000&q=80"
+    desc: "Premium motor insurance that keeps you moving, with fast and hassle-free claim settlements.",
+    img: "https://images.unsplash.com/photo-1605478620424-2a10480432ee?auto=format&fit=crop&w=2000&q=80"
   },
   {
     title: "Travel Without Worries",
-    desc: "Global travel insurance covering medical emergencies, delays, and lost baggage.",
-    img: "https://plus.unsplash.com/premium_photo-1682090845582-0e8d40f99628?auto=format&fit=crop&w=2000&q=80"
+    desc: "Explore the world knowing you're protected against medical emergencies and trip cancellations.",
+    img: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80"
   },
   {
     title: "Grow Your Business Safely",
-    desc: "Corporate risk management protecting your enterprise assets and liabilities.",
-    img: "https://plus.unsplash.com/premium_photo-1664303357307-f7607d15f5e3?auto=format&fit=crop&w=2000&q=80"
+    desc: "Customized corporate solutions designed to mitigate risks and secure your enterprise.",
+    img: "https://images.unsplash.com/photo-1473186578172-c141e6798cf4?auto=format&fit=crop&w=2000&q=80"
   }
 ]
 
@@ -92,9 +92,14 @@ export default function PinnedStorytelling() {
           <div 
             key={i}
             ref={el => { if(el) imagesRef.current[i] = el }}
-            className="absolute inset-0 w-full h-full bg-cover bg-center transition-opacity"
-            style={{ backgroundImage: `url("${story.img}")` }}
+            className="absolute inset-0 w-full h-full"
           >
+            <img 
+              src={story.img}
+              alt={story.title}
+              loading="lazy"
+              className="absolute inset-0 w-full h-full object-cover transition-opacity"
+            />
             <div className="absolute inset-0 bg-navy/70 backdrop-blur-[2px]"></div>
           </div>
         ))}

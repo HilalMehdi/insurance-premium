@@ -44,9 +44,15 @@ export default function CinematicHero() {
       {/* Background Image */}
       <div 
         ref={bgRef}
-        className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://plus.unsplash.com/premium_photo-1682092585257-58d1c813d9b4?auto=format&fit=crop&w=2000&q=80")' }}
+        className="absolute inset-0 w-full h-full"
       >
+        <img 
+          src="https://images.unsplash.com/photo-1543332164-6e82f355badc?auto=format&fit=crop&w=2000&q=80"
+          alt="BimaKavach Hero"
+          loading="eager"
+          fetchPriority="high"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
         <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
       </div>
 

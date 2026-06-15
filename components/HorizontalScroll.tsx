@@ -56,7 +56,7 @@ export default function HorizontalScroll() {
       {/* Horizontal Track */}
       <div 
         ref={wrapperRef}
-        className="flex gap-6 px-6 md:px-20 w-max md:w-auto overflow-x-auto md:overflow-visible pb-10 hide-scrollbar"
+        className="flex gap-6 px-6 md:px-20 w-max md:w-auto overflow-x-auto md:overflow-visible pb-10 hide-scrollbar will-change-transform"
       >
         {cards.map((card, i) => (
           <div 
