@@ -43,15 +43,13 @@ export default function Founder() {
             className="flex flex-col items-center gap-10"
           >
             {/* Portrait frame */}
-            <div className="relative">
-              <div className="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-2 border-teal/20 shadow-2xl shadow-teal/10">
-                <img 
-                  src="/insurance-premium/images/founder_real.png"
-                  alt="Rakesh Sharma"
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+            <div className="relative w-72 md:w-80">
+              <img 
+                src="/insurance-premium/images/founder_real.png"
+                alt="Rakesh Sharma"
+                loading="lazy"
+                className="w-full h-auto object-contain drop-shadow-[0_20px_30px_rgba(20,184,166,0.15)]"
+              />
 
               {/* Experience badge */}
               <motion.div

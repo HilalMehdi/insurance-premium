@@ -72,7 +72,7 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="#quote" className="bg-gradient-to-r from-teal to-ins-blue text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 hover:scale-105 transition-all shadow-lg">
+          <a href="#calculator" className="bg-gradient-to-r from-teal to-ins-blue text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 hover:scale-105 transition-all shadow-lg">
             Get Free Quote
           </a>
         </div>
@@ -96,7 +96,7 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <a href="#quote" className="bg-gradient-to-r from-teal to-ins-blue text-white px-5 py-3 rounded-full text-center font-semibold mt-2" onClick={() => setMenuOpen(false)}>
+              <a href="#calculator" className="bg-gradient-to-r from-teal to-ins-blue text-white px-5 py-3 rounded-full text-center font-semibold mt-2" onClick={() => setMenuOpen(false)}>
                 Get Free Quote
               </a>
             </div>
