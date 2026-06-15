@@ -59,8 +59,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-white/8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-white/35 text-sm">© 2025 BimaKavach. All rights reserved.</p>
+        <div className="border-t border-white/8 pt-8 flex flex-col md:flex-row items-center justify-end gap-4">
           <div className="flex items-center gap-3">
             {socialIcons.map(({ label, path }) => (
               <a key={label} href="#" aria-label={label} className="w-9 h-9 glass rounded-full flex items-center justify-center hover:bg-teal/20 transition-all group">

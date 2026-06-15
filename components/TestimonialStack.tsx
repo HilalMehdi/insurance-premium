@@ -25,7 +25,7 @@ const testimonials = [
     name: "Amit Patel",
     role: "IT Director",
     text: "Zero-depreciation motor insurance claim settled in 24 hours. The digital process is flawless, and having a dedicated human advisor makes all the difference in emergencies.",
-    color: "bg-teal/5"
+    color: "bg-teal-50"
   }
 ]
 
