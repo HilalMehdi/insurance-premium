@@ -51,7 +51,7 @@ export default function ImageReveal() {
       <div 
         ref={imgRef}
         className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1611078489935-0cb964de46d6?auto=format&fit=crop&w=2000&q=80")' }}
+        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=2000&q=80")' }}
       ></div>
       
       <div 
