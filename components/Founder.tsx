@@ -34,38 +34,23 @@ export default function Founder() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left — avatar + badge */}
+          {/* Left — CTA Button replacing photo */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="relative flex justify-center"
+            className="flex items-center justify-center"
           >
-            {/* Portrait frame */}
-            <div className="relative">
-              <div className="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-2 border-teal/20 shadow-2xl shadow-teal/10">
-                <img 
-                  src="/insurance-premium/images/ai/advisor_portrait_1781532910105.png"
-                  alt="Anwar Hussain Zaidi"
-                  loading="lazy"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-
-              {/* Experience badge */}
-              <motion.div
-                animate={{ y: [-4, 4, -4] }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -bottom-6 -right-6 w-28 h-28 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex flex-col items-center justify-center shadow-2xl shadow-amber-500/30 text-navy text-center"
-              >
-                <span className="text-3xl font-bold leading-none">30+</span>
-                <span className="text-xs font-semibold mt-1 leading-tight px-2">Years of<br />Excellence</span>
-              </motion.div>
-
-              {/* Glow ring */}
-              <div className="absolute inset-0 rounded-3xl ring-1 ring-teal/20 pointer-events-none" />
-            </div>
+            <motion.a
+              href="#calculator"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-teal to-ins-blue text-white px-8 py-6 rounded-3xl font-bold shadow-2xl shadow-teal/30 hover:shadow-teal/40 transition-all flex flex-col items-center gap-2 group w-full max-w-sm text-center border border-white/10"
+            >
+              <span className="text-2xl font-serif">Calculate Premium</span>
+              <span className="text-white/80 font-normal">Get instant estimate in seconds &rarr;</span>
+            </motion.a>
           </motion.div>
 
           {/* Right — bio */}

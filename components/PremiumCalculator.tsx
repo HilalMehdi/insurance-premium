@@ -154,7 +154,7 @@ export default function PremiumCalculator() {
   }
 
   return (
-    <section className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
+    <section id="calculator" className="py-24 bg-gradient-to-b from-white to-slate-50 relative overflow-hidden">
       
       {/* Background Ornaments */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-teal/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"></div>
