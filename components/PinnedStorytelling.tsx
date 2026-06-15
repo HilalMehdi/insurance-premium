@@ -11,27 +11,27 @@ const stories = [
   {
     title: "Protect Your Family",
     desc: "Comprehensive health and life coverage ensuring your loved ones are never left vulnerable.",
-    img: "https://images.unsplash.com/photo-1511895426328-dc8714191300?auto=format&fit=crop&w=2000&q=80"
+    img: "https://plus.unsplash.com/premium_photo-1682092603217-488950bb5500?auto=format&fit=crop&w=2000&q=80"
   },
   {
     title: "Secure Your Future",
     desc: "Robust life insurance and wealth protection plans tailored for long-term peace of mind.",
-    img: "https://images.unsplash.com/photo-1556155092-490a1ba16284?auto=format&fit=crop&w=2000&q=80"
+    img: "https://images.unsplash.com/photo-1632833239869-a37e3a5806d2?auto=format&fit=crop&w=2000&q=80"
   },
   {
     title: "Drive With Confidence",
     desc: "Premium motor insurance with zero depreciation and rapid claim settlement.",
-    img: "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=2000&q=80"
+    img: "https://images.unsplash.com/photo-1707311381855-28f2acd90b50?auto=format&fit=crop&w=2000&q=80"
   },
   {
     title: "Travel Without Worries",
     desc: "Global travel insurance covering medical emergencies, delays, and lost baggage.",
-    img: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=2000&q=80"
+    img: "https://plus.unsplash.com/premium_photo-1682090845582-0e8d40f99628?auto=format&fit=crop&w=2000&q=80"
   },
   {
     title: "Grow Your Business Safely",
     desc: "Corporate risk management protecting your enterprise assets and liabilities.",
-    img: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2000&q=80"
+    img: "https://plus.unsplash.com/premium_photo-1664303357307-f7607d15f5e3?auto=format&fit=crop&w=2000&q=80"
   }
 ]
 

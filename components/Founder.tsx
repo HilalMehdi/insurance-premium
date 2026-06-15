@@ -45,13 +45,10 @@ export default function Founder() {
             {/* Portrait frame */}
             <div className="relative">
               <div className="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-2 border-teal/20 shadow-2xl shadow-teal/10">
-                {/* Placeholder avatar with initials — replaced when photo is available */}
-                <div className="w-full h-full bg-gradient-to-br from-ins-blue/40 to-navy flex flex-col items-center justify-center gap-4">
-                  <div className="w-28 h-28 bg-gradient-to-br from-teal to-ins-blue rounded-full flex items-center justify-center shadow-xl">
-                    <span className="text-white font-bold text-4xl font-serif">AZ</span>
-                  </div>
-                  <p className="text-white/50 text-sm font-medium tracking-wide">Anwar Hussain Zaidi</p>
-                </div>
+                <div 
+                  className="w-full h-full bg-cover bg-center"
+                  style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1649954459557-f77663765a48?auto=format&fit=crop&w=800&q=80")' }}
+                ></div>
               </div>
 
               {/* Experience badge */}

@@ -45,7 +45,7 @@ export default function CinematicHero() {
       <div 
         ref={bgRef}
         className="absolute inset-0 w-full h-full bg-cover bg-center"
-        style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2000&q=80")' }}
+        style={{ backgroundImage: 'url("https://plus.unsplash.com/premium_photo-1682092585257-58d1c813d9b4?auto=format&fit=crop&w=2000&q=80")' }}
       >
         <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
       </div>
