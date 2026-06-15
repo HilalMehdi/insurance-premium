@@ -5,17 +5,17 @@ import { gsap } from 'gsap'
 import { CheckCircle, Clock, Award, Users, Star, Phone, Shield, Zap } from 'lucide-react'
 
 const stats = [
-  { end: 50000, suffix: '+', label: 'Policies Issued', icon: Users },
+  { end: 30, suffix: '+', label: 'Years Experience', icon: Users },
+  { end: 50000, suffix: '+', label: 'Policies Served', icon: Award },
   { end: 98, suffix: '%', label: 'Claim Success Rate', icon: CheckCircle },
-  { end: 24, suffix: '/7', label: 'Support Available', icon: Clock },
-  { end: 15, suffix: '+', label: 'Insurance Partners', icon: Award },
+  { end: 99, suffix: '%', label: 'Customer Satisfaction', icon: Star },
 ]
 
 const features = [
-  { icon: Star,   title: 'Best Price Guarantee',   desc: 'We compare across 15+ insurers to find the lowest premium for maximum coverage.' },
-  { icon: Phone,  title: 'Dedicated Claims Support', desc: 'Expert claims team guides you every step for hassle-free, fast settlement.' },
-  { icon: Zap,    title: 'Instant Policy Issuance', desc: 'Get your policy document in minutes after payment. 100% paperless.' },
-  { icon: Shield, title: 'IRDAI Regulated',         desc: 'All partners are IRDAI licensed for your complete peace of mind.' },
+  { icon: Shield, title: 'Trust & Transparency', desc: 'We compare across 15+ insurers to find the best plan with zero hidden fees.' },
+  { icon: Phone,  title: 'Expert Guidance', desc: 'Our dedicated claims team guides you every step for hassle-free settlement.' },
+  { icon: Star,   title: 'Personalized Recommendations', desc: 'Custom tailored plans for individuals, families, and businesses.' },
+  { icon: Zap,    title: 'Fast Processing', desc: 'Get your policy document in minutes. 100% paperless.' },
 ]
 
 function Counter({ end, suffix, label, icon: Icon, trigger }: { end: number; suffix: string; label: string; icon: React.ElementType; trigger: boolean }) {
@@ -57,10 +57,11 @@ export default function WhyChooseUs() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
-          <span className="text-teal font-semibold text-sm uppercase tracking-widest">Why InsureShield</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-white mt-3">
-            Numbers That Speak<br /><span className="gradient-text">For Themselves</span>
+          <span className="text-teal font-semibold text-sm uppercase tracking-widest">About Us</span>
+          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-white mt-3 leading-tight">
+            Your Trusted <span className="gradient-text">Insurance Partner</span>
           </h2>
+          <p className="text-white/60 text-[clamp(1rem,4vw,1.125rem)] max-w-xl mx-auto mt-4">Help individuals, families, and businesses find the right insurance coverage.</p>
         </motion.div>
 
         <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-10 mb-24">

@@ -4,8 +4,8 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { FileText, Upload, Search, ThumbsUp, Banknote } from 'lucide-react'
 
 const steps = [
-  { icon: FileText, step: '01', title: 'Report Claim',          desc: 'Notify us online or via phone immediately after the incident. Available 24/7.', color: 'from-teal to-cyan-400' },
-  { icon: Upload,   step: '02', title: 'Document Submission',   desc: 'Upload required documents through our secure portal or WhatsApp.',             color: 'from-ins-blue to-blue-400' },
+  { icon: FileText, step: '01', title: 'Notify Claim',          desc: 'Notify us online or via phone immediately after the incident. Available 24/7.', color: 'from-teal to-cyan-400' },
+  { icon: Upload,   step: '02', title: 'Submit Documents',      desc: 'Upload required documents through our secure portal or WhatsApp.',             color: 'from-ins-blue to-blue-400' },
   { icon: Search,   step: '03', title: 'Verification',          desc: 'Our claims team verifies documents and assesses the claim within 48 hours.',    color: 'from-violet-400 to-purple-500' },
   { icon: ThumbsUp, step: '04', title: 'Approval',              desc: 'Receive claim approval notification via SMS and email instantly.',              color: 'from-amber-400 to-orange-500' },
   { icon: Banknote, step: '05', title: 'Settlement',            desc: 'Amount transferred directly to your account within 7 working days.',           color: 'from-success to-emerald-400' },
@@ -21,10 +21,10 @@ export default function ClaimProcess() {
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">Easy Claims</span>
-          <h2 className="font-serif text-4xl md:text-5xl font-bold text-navy mt-3 mb-4">
-            Claim in <span className="gradient-text">5 Simple Steps</span>
+          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
+            Fast & Hassle-Free <span className="gradient-text">Claims</span>
           </h2>
-          <p className="text-slate-500 text-lg max-w-xl mx-auto">Our streamlined process ensures quick, stress-free claim settlements.</p>
+          <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)] max-w-xl mx-auto">Simple claim process. Average settlement time: 7 days. 24/7 claim support availability with dedicated assistance.</p>
         </motion.div>
 
         <div ref={ref} className="relative">

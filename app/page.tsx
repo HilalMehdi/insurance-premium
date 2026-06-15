@@ -7,10 +7,16 @@ const PinnedStorytelling = dynamic(() => import('@/components/PinnedStorytelling
 const AppleShieldMorph = dynamic(() => import('@/components/AppleShieldMorph'))
 const InsuranceCards = dynamic(() => import('@/components/InsuranceCards'))
 const HorizontalScroll = dynamic(() => import('@/components/HorizontalScroll'))
+const HomeInsurance = dynamic(() => import('@/components/HomeInsurance'))
+const TravelInsurance = dynamic(() => import('@/components/TravelInsurance'))
+const BusinessInsurance = dynamic(() => import('@/components/BusinessInsurance'))
+const Comparison = dynamic(() => import('@/components/Comparison'))
+const ClaimProcess = dynamic(() => import('@/components/ClaimProcess'))
 const StatisticsCounter = dynamic(() => import('@/components/StatisticsCounter'))
 const ImageReveal = dynamic(() => import('@/components/ImageReveal'))
 const TestimonialStack = dynamic(() => import('@/components/TestimonialStack'))
 const Founder = dynamic(() => import('@/components/Founder'))
+const WhyChooseUs = dynamic(() => import('@/components/WhyChooseUs'))
 const FAQ = dynamic(() => import('@/components/FAQ'))
 const PremiumCalculator = dynamic(() => import('@/components/PremiumCalculator'))
 const QuoteForm = dynamic(() => import('@/components/QuoteForm'))
@@ -24,11 +30,17 @@ export default function Home() {
       <PinnedStorytelling />
       <AppleShieldMorph />
       <InsuranceCards />
+      <HomeInsurance />
+      <TravelInsurance />
+      <BusinessInsurance />
+      <Comparison />
+      <ClaimProcess />
       <HorizontalScroll />
       <StatisticsCounter />
       <ImageReveal />
       <TestimonialStack />
       <Founder />
+      <WhyChooseUs />
       <FAQ />
       <PremiumCalculator />
       <QuoteForm />

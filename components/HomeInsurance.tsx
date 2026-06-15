@@ -1,0 +1,91 @@
+'use client'
+import { motion } from 'framer-motion'
+import { Shield, CheckCircle } from 'lucide-react'
+
+const benefits = [
+  'Affordable premiums',
+  'Quick claim settlement',
+  'Comprehensive coverage',
+  '24/7 assistance'
+]
+
+export default function HomeInsurance() {
+  return (
+    <section id="home-insurance" className="section-padding bg-slate-50 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="flex flex-col gap-8"
+          >
+            <div>
+              <span className="text-teal font-semibold text-sm uppercase tracking-widest">Home Insurance</span>
+              <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 leading-tight mb-6">
+                Protect Your Home,<br />Protect Your <span className="gradient-text">Future</span>
+              </h2>
+              <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)] leading-relaxed mb-4">
+                Safeguard your house and valuable belongings against:
+              </p>
+              <ul className="text-slate-600 mb-8 space-y-2 font-medium">
+                <li>• Fire damage</li>
+                <li>• Natural disasters</li>
+                <li>• Theft and burglary</li>
+                <li>• Electrical damage</li>
+                <li>• Structural damage</li>
+              </ul>
+            </div>
+            
+            <div>
+              <h3 className="font-bold text-navy text-xl mb-4">Benefits</h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {benefits.map(b => (
+                  <div key={b} className="flex items-center gap-3">
+                    <CheckCircle className="w-5 h-5 text-teal" />
+                    <span className="text-slate-700 font-medium">{b}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <motion.a
+              href="#quote"
+              whileHover={{ scale: 1.04 }}
+              className="inline-flex items-center justify-center gap-2 mt-4 bg-gradient-to-r from-teal to-ins-blue text-white px-8 py-4 rounded-full font-semibold shadow-xl shadow-teal/20 hover:opacity-90 transition-all w-fit"
+            >
+              Talk to an Advisor →
+            </motion.a>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="relative"
+          >
+            <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative">
+              <div className="absolute inset-0 bg-gradient-to-tr from-teal/20 to-transparent z-10" />
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=800" alt="Beautiful family home" className="w-full h-full object-cover" />
+            </div>
+            <div className="absolute -bottom-8 -left-8 glass rounded-3xl p-6 shadow-xl border border-white/20 z-20">
+              <div className="flex items-center gap-4">
+                <div className="w-12 h-12 bg-teal/10 rounded-full flex items-center justify-center">
+                  <Shield className="w-6 h-6 text-teal" />
+                </div>
+                <div>
+                  <div className="text-sm text-slate-500 font-medium">Full Protection</div>
+                  <div className="text-navy font-bold text-lg">Guaranteed</div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </div>
+    </section>
+  )
+}

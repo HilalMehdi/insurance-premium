@@ -27,7 +27,7 @@ export default function Navbar() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.7, ease: 'easeOut' }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'glass-dark shadow-2xl' : 'bg-transparent'}`}
+      className={`fixed top-0 left-0 right-0 z-[9999] transition-all duration-500 ${scrolled ? 'glass-dark shadow-2xl' : 'bg-transparent'}`}
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <a href="#home" className="flex items-center gap-2 group">
@@ -60,11 +60,14 @@ export default function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   className="absolute top-full left-0 w-48 glass-dark rounded-2xl p-2 shadow-2xl"
                 >
-                  {link.dropdown.map(item => (
-                    <a key={item} href="#insurance" className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-all">
-                      {item} Insurance
-                    </a>
-                  ))}
+                  {link.dropdown.map(item => {
+                    const targetHref = ['Home', 'Travel', 'Business'].includes(item) ? `#${item.toLowerCase()}-insurance` : '#insurance';
+                    return (
+                      <a key={item} href={targetHref} className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-all" onClick={() => setDropdown(null)}>
+                        {item} Insurance
+                      </a>
+                    )
+                  })}
                 </motion.div>
               )}
             </li>
@@ -92,9 +95,23 @@ export default function Navbar() {
           >
             <div className="px-6 py-5 flex flex-col gap-4">
               {navLinks.map(link => (
-                <a key={link.label} href={link.href} className="text-white/80 hover:text-white font-medium py-2 border-b border-white/10" onClick={() => setMenuOpen(false)}>
-                  {link.label}
-                </a>
+                <div key={link.label} className="border-b border-white/10">
+                  <a href={link.href} className="text-white/80 hover:text-white font-medium block py-2" onClick={() => setMenuOpen(false)}>
+                    {link.label}
+                  </a>
+                  {link.dropdown && (
+                    <div className="pl-4 pb-2 space-y-2">
+                      {link.dropdown.map(item => {
+                        const targetHref = ['Home', 'Travel', 'Business'].includes(item) ? `#${item.toLowerCase()}-insurance` : '#insurance';
+                        return (
+                          <a key={item} href={targetHref} className="block text-white/60 hover:text-white text-sm" onClick={() => setMenuOpen(false)}>
+                            {item} Insurance
+                          </a>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
               ))}
               <a href="#calculator" className="bg-gradient-to-r from-teal to-ins-blue text-white px-5 py-3 rounded-full text-center font-semibold mt-2" onClick={() => setMenuOpen(false)}>
                 Get Free Quote

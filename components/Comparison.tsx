@@ -33,9 +33,11 @@ export default function Comparison() {
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">Compare Plans</span>
           <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
-            Find the <span className="gradient-text">Perfect Plan</span>
+            Compare Insurance Plans <span className="gradient-text">Easily</span>
           </h2>
-          <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)]">Transparent comparison — no hidden charges, no confusion.</p>
+          <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)]">
+            Compare multiple plans side by side based on: Premium amount, Coverage benefits, Claim settlement ratio, Network hospitals, Add-on features.
+          </p>
         </motion.div>
 
         {/* Filter tabs */}
@@ -79,7 +81,7 @@ export default function Comparison() {
                   ))}
                 </ul>
                 <a href="#calculator" className={`block text-center bg-gradient-to-r ${plan.color} text-white py-3.5 rounded-2xl font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-lg`}>
-                  Choose Plan
+                  Get Expert Guidance
                 </a>
               </motion.div>
             )) : (
