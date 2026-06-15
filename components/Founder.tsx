@@ -34,23 +34,39 @@ export default function Founder() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left — CTA Button replacing photo */}
+          {/* Left — avatar + badge + CTA Button */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
-            className="flex items-center justify-center"
+            className="flex flex-col items-center gap-10"
           >
-            <motion.a
-              href="#calculator"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-teal to-ins-blue text-white px-8 py-6 rounded-3xl font-bold shadow-2xl shadow-teal/30 hover:shadow-teal/40 transition-all flex flex-col items-center gap-2 group w-full max-w-sm text-center border border-white/10"
-            >
-              <span className="text-2xl font-serif">Calculate Premium</span>
-              <span className="text-white/80 font-normal">Get instant estimate in seconds &rarr;</span>
-            </motion.a>
+            {/* Portrait frame */}
+            <div className="relative">
+              <div className="w-72 h-80 md:w-80 md:h-96 rounded-3xl overflow-hidden border-2 border-teal/20 shadow-2xl shadow-teal/10">
+                <img 
+                  src="/insurance-premium/images/founder_real.png"
+                  alt="Rakesh Sharma"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+
+              {/* Experience badge */}
+              <motion.div
+                animate={{ y: [-4, 4, -4] }}
+                transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+                className="absolute -bottom-6 -right-6 w-28 h-28 bg-gradient-to-br from-amber-400 to-orange-500 rounded-full flex flex-col items-center justify-center shadow-2xl shadow-amber-500/30 text-navy text-center"
+              >
+                <span className="text-3xl font-bold leading-none">30+</span>
+                <span className="text-xs font-semibold mt-1 leading-tight px-2">Years of<br />Excellence</span>
+              </motion.div>
+
+              {/* Glow ring */}
+              <div className="absolute inset-0 rounded-3xl ring-1 ring-teal/20 pointer-events-none" />
+            </div>
+
           </motion.div>
 
           {/* Right — bio */}
@@ -60,10 +76,22 @@ export default function Founder() {
             viewport={{ once: true }}
             transition={{ duration: 0.7 }}
           >
-            <h3 className="font-serif text-3xl font-bold text-white mb-1">Anwar Hussain Zaidi</h3>
-            <p className="text-teal font-semibold text-sm mb-6 uppercase tracking-widest">
-              Founder &amp; Principal Insurance Advisor
-            </p>
+            <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-4 mb-6">
+              <div>
+                <h3 className="font-serif text-3xl font-bold text-white mb-1">Anwar Hussain Zaidi</h3>
+                <p className="text-teal font-semibold text-sm uppercase tracking-widest">
+                  Founder &amp; Principal Insurance Advisor
+                </p>
+              </div>
+              <motion.a
+                href="#calculator"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center justify-center bg-gradient-to-r from-teal to-blue-500 text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-teal/20 hover:shadow-teal/40 transition-all whitespace-nowrap text-sm mt-1"
+              >
+                Get Free Quote
+              </motion.a>
+            </div>
 
             <div className="space-y-4 mb-8 text-white/60 leading-relaxed text-[0.95rem]">
               <p>
