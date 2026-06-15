@@ -41,11 +41,14 @@ export default function Navbar() {
 
         <ul className="hidden lg:flex items-center gap-8">
           {navLinks.map(link => (
-            <li key={link.label} className="relative">
+            <li 
+              key={link.label} 
+              className="relative py-4"
+              onMouseEnter={() => link.dropdown && setDropdown(link.label)}
+              onMouseLeave={() => setDropdown(null)}
+            >
               <a
                 href={link.href}
-                onMouseEnter={() => link.dropdown && setDropdown(link.label)}
-                onMouseLeave={() => setDropdown(null)}
                 className="flex items-center gap-1 text-white/80 hover:text-white text-sm font-medium transition-colors"
               >
                 {link.label}
@@ -55,9 +58,7 @@ export default function Navbar() {
                 <motion.div
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
-                  onMouseEnter={() => setDropdown(link.label)}
-                  onMouseLeave={() => setDropdown(null)}
-                  className="absolute top-full left-0 mt-3 w-48 glass-dark rounded-2xl p-2 shadow-2xl"
+                  className="absolute top-full left-0 w-48 glass-dark rounded-2xl p-2 shadow-2xl"
                 >
                   {link.dropdown.map(item => (
                     <a key={item} href="#insurance" className="block px-4 py-2.5 text-sm text-white/70 hover:text-white hover:bg-white/10 rounded-xl transition-all">
@@ -71,7 +72,6 @@ export default function Navbar() {
         </ul>
 
         <div className="hidden lg:flex items-center gap-3">
-          <a href="#quote" className="text-white/70 hover:text-white text-sm font-medium transition-colors">Sign In</a>
           <a href="#quote" className="bg-gradient-to-r from-teal to-ins-blue text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:opacity-90 hover:scale-105 transition-all shadow-lg">
             Get Free Quote
           </a>
