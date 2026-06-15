@@ -1,5 +1,10 @@
 import type { Metadata } from 'next'
+import { Playfair_Display, Inter } from 'next/font/google'
+import Chatbot from '@/components/Chatbot'
 import './globals.css'
+
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+const playfair = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair' })
 
 export const metadata: Metadata = {
   title: 'BimaKavach — Protect What Matters Most',
@@ -10,7 +15,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body className="antialiased">{children}</body>
+      <body className={`${inter.variable} ${playfair.variable} font-sans bg-slate-50 text-navy antialiased`}>
+        {children}
+        <Chatbot />
+      </body>
     </html>
   )
 }

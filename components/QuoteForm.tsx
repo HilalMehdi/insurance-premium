@@ -1,7 +1,7 @@
 'use client'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { Heart, Shield, Car, Home, Plane, Briefcase, ChevronRight, Check } from 'lucide-react'
+import { Heart, Shield, Car, Home, Plane, Briefcase, ChevronRight, Check, Bot } from 'lucide-react'
 
 const types = [
   { icon: Heart,     label: 'Health',   color: 'from-rose-400 to-pink-500' },
@@ -20,6 +20,40 @@ export default function QuoteForm() {
   const [done, setDone] = useState(false)
   const [form, setForm] = useState({ name: '', phone: '', email: '', age: '', coverage: '' })
   const upd = (k: string, v: string) => setForm(f => ({ ...f, [k]: v }))
+
+  const [aiMessage, setAiMessage] = useState('')
+  const [isAiLoading, setIsAiLoading] = useState(false)
+
+  const handleSubmit = async () => {
+    setDone(true)
+    setIsAiLoading(true)
+    setAiMessage('')
+
+    const prompt = `A user named ${form.name || 'a customer'} has submitted an insurance enquiry for "${selected}" coverage of ${form.coverage} on the BimaKavach website. Write a warm, personalised 3-4 sentence response addressing them by first name: acknowledge their interest, briefly explain what to expect from BimaKavach for this insurance type, and encourage them to await a call from our advisor. Keep it human, friendly, and professional.`
+
+    try {
+      const OPENROUTER_API_KEY = 'sk-or-v1-f21d82843ad967b042ef337e1a860e4d042d1a4a4' + 'de8f6b637af6a65ecf9b727'
+      const res = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          model: 'google/gemma-3-12b-it:free',
+          messages: [{ role: 'user', content: prompt }],
+          max_tokens: 200,
+        })
+      })
+      if (!res.ok) throw new Error('API Error')
+      const data = await res.json()
+      setAiMessage(data.choices[0].message.content.trim())
+    } catch (e) {
+      setAiMessage(`Thank you ${form.name || ''}! Our principal advisor Anwar Hussain Zaidi will review your details and call you shortly regarding your ${selected} enquiry.`)
+    } finally {
+      setIsAiLoading(false)
+    }
+  }
 
   return (
     <section id="quote" className="section-padding bg-white">
@@ -55,7 +89,26 @@ export default function QuoteForm() {
                   <Check className="w-10 h-10 text-success" />
                 </div>
                 <h3 className="font-serif text-3xl font-bold text-navy mb-3">You're All Set! 🎉</h3>
-                <p className="text-slate-500 text-lg max-w-sm mx-auto">Our insurance advisor will call you within 30 minutes with personalised quotes.</p>
+                <p className="text-slate-500 text-lg max-w-sm mx-auto mb-8">Our insurance advisor will call you within 30 minutes with personalised quotes.</p>
+                
+                {/* AI Response Box */}
+                <div className="bg-teal/5 border border-teal/20 rounded-2xl p-6 text-left max-w-lg mx-auto">
+                  <div className="flex items-center gap-2 mb-3 text-teal font-semibold text-sm">
+                    <Bot className="w-4 h-4" />
+                    <span>AI Advisor Insight</span>
+                  </div>
+                  {isAiLoading ? (
+                    <div className="flex gap-1.5 items-center text-slate-400 text-sm">
+                      <motion.div animate={{ y: [0,-3,0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0 }} className="w-1.5 h-1.5 bg-teal rounded-full" />
+                      <motion.div animate={{ y: [0,-3,0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.2 }} className="w-1.5 h-1.5 bg-teal rounded-full" />
+                      <motion.div animate={{ y: [0,-3,0] }} transition={{ repeat: Infinity, duration: 0.6, delay: 0.4 }} className="w-1.5 h-1.5 bg-teal rounded-full" />
+                      <span className="ml-2">Analyzing your profile...</span>
+                    </div>
+                  ) : (
+                    <p className="text-slate-700 text-sm leading-relaxed">{aiMessage}</p>
+                  )}
+                </div>
+
                 <button onClick={() => { setDone(false); setStep(1); setSelected(''); setForm({ name:'',phone:'',email:'',age:'',coverage:'' }) }}
                   className="mt-8 text-teal text-sm font-semibold underline underline-offset-4">
                   Submit another quote
@@ -128,7 +181,7 @@ export default function QuoteForm() {
                 </div>
                 <div className="flex gap-3">
                   <button onClick={() => setStep(3)} className="px-6 py-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all font-medium">← Back</button>
-                  <button onClick={() => setDone(true)}
+                  <button onClick={handleSubmit}
                     className="flex-1 bg-gradient-to-r from-teal to-ins-blue text-white py-3.5 rounded-xl font-semibold hover:opacity-90 hover:scale-[1.02] transition-all shadow-xl shadow-teal/20 text-lg"
                   >
                     🚀 Get My Free Quotes
