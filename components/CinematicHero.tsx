@@ -23,7 +23,7 @@ export default function CinematicHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=150%',
+          end: '+=300%',
           scrub: 1.5,
           pin: true,
         }
@@ -47,7 +47,7 @@ export default function CinematicHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=150%',
+          end: '+=300%',
           scrub: 1.5,
           pin: true,
         }
@@ -67,7 +67,7 @@ export default function CinematicHero() {
   }, { scope: containerRef })
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-navy flex items-center justify-center">
+    <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-navy flex items-center">
       {/* Background Image */}
       <div 
         ref={bgRef}
