@@ -28,17 +28,18 @@ export default function CinematicHero() {
           pin: true,
         }
       })
-      // Sequence 1: Video scales/dims, Hero Text fades up & out
-      tl.to(bgRef.current, { scale: 1.05, opacity: 0.3, ease: 'power1.inOut' }, 0)
+      // Sequence 1: Video scales/dims slightly, heavily blurred instead of completely dimmed
+      tl.to(bgRef.current, { scale: 1.05, opacity: 0.8, filter: 'blur(20px)', ease: 'power1.inOut' }, 0)
       tl.to(textRef.current, { y: -150, opacity: 0, scale: 0.9, ease: 'power1.inOut' }, 0)
       
-      // Sequence 2: Bring in the Highlight block
+      // Sequence 2: Bring in the Highlight block & AI Aurora
       tl.fromTo(highlightRef.current, { y: 100, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.2)
+      tl.fromTo('.ai-aurora', { scale: 0.8, opacity: 0 }, { scale: 1.2, opacity: 0.8, ease: 'power2.out', duration: 2 }, 0.2)
 
-      // Sequence 3: Scrub the text gradient mask
+      // Sequence 3: Scrub the text soft gradient reveal (no harsh polygon clipping)
       tl.fromTo('.highlight-mask-video', 
-        { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' },
-        { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'none' }, 0.4)
+        { backgroundPosition: '200% 0%' },
+        { backgroundPosition: '-100% 0%', ease: 'none' }, 0.4)
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -51,14 +52,15 @@ export default function CinematicHero() {
           pin: true,
         }
       })
-      tl.to(bgRef.current, { scale: 1.05, opacity: 0.4, ease: 'power1.inOut' }, 0)
+      tl.to(bgRef.current, { scale: 1.05, opacity: 0.8, filter: 'blur(15px)', ease: 'power1.inOut' }, 0)
       tl.to(textRef.current, { y: -50, opacity: 0, ease: 'power1.inOut' }, 0)
       
       tl.fromTo(highlightRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.3)
+      tl.fromTo('.ai-aurora', { scale: 0.8, opacity: 0 }, { scale: 1.2, opacity: 0.6, ease: 'power2.out', duration: 2 }, 0.3)
       
       tl.fromTo('.highlight-mask-video', 
-        { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' },
-        { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'none' }, 0.5)
+        { backgroundPosition: '200% 0%' },
+        { backgroundPosition: '-100% 0%', ease: 'none' }, 0.5)
     });
 
     return () => mm.revert();
@@ -108,17 +110,25 @@ export default function CinematicHero() {
       </div>
 
       {/* The Highlight Text Reveal (Hidden initially, animates in over the video) */}
-      <div ref={highlightRef} className="absolute inset-0 z-20 flex items-center justify-center px-4 md:px-6 max-w-6xl mx-auto opacity-0 pointer-events-none">
-        <div className="relative text-center w-full">
-          {/* Faded Background Text */}
-          <h2 className="text-[clamp(1.75rem,5vw,4.5rem)] font-serif font-bold text-white/20 leading-[1.2]">
-            We believe protection is a fundamental right. Not a luxury. Experience seamless claims, zero hidden clauses, and absolute transparency.
-          </h2>
-          
-          {/* Highlighted Foreground Text Mask */}
+      <div ref={highlightRef} className="absolute inset-0 z-20 flex items-center justify-center px-4 md:px-6 max-w-6xl mx-auto opacity-0 pointer-events-none overflow-hidden">
+        
+        {/* Google Labs Style AI Aurora Background */}
+        <div className="ai-aurora absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl aspect-square opacity-0 pointer-events-none mix-blend-screen">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal/40 rounded-full mix-blend-screen filter blur-[100px] animate-[spin_8s_linear_infinite]" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/40 rounded-full mix-blend-screen filter blur-[100px] animate-[spin_10s_linear_infinite_reverse]" />
+          <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-fuchsia-500/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse" />
+        </div>
+
+        <div className="relative text-center w-full z-10">
+          {/* Highlighted Foreground Soft Text Reveal */}
           <h2 
-            className="highlight-mask-video absolute top-0 left-0 w-full text-[clamp(1.75rem,5vw,4.5rem)] font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal to-blue-400 leading-[1.2]"
-            style={{ clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' }}
+            className="highlight-mask-video text-[clamp(1.75rem,5vw,4.5rem)] font-serif font-bold text-transparent bg-clip-text leading-[1.2]"
+            style={{ 
+              backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 40%, #2dd4bf 50%, #60a5fa 60%, rgba(255,255,255,0.1) 100%)',
+              backgroundSize: '200% 100%',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: '200% 0%'
+            }}
           >
             We believe protection is a fundamental right. Not a luxury. Experience seamless claims, zero hidden clauses, and absolute transparency.
           </h2>
