@@ -6,20 +6,42 @@ import { Check, X, Star } from 'lucide-react'
 const filters = ['All', 'Health', 'Life', 'Motor', 'Home']
 
 const plans = [
+  // Health
   {
-    name: 'Basic Shield', category: 'Health', price: '₹3,500', period: '/year',
-    coverage: '₹3 Lakhs', claimRatio: '92%', badge: null, color: 'from-slate-400 to-slate-600',
-    features: ['Cashless hospitalisation', 'Pre & post hospitalisation', 'Day care procedures', null, null],
+    name: 'Global Concierge Health', category: 'Health', price: '₹2.5 Lakhs', period: '/year',
+    coverage: '₹10 Crores', claimRatio: '99%', badge: null, color: 'from-slate-400 to-slate-600',
+    features: ['Global Cashless', 'Private Room Guarantee', 'Air Evacuation', null, null],
   },
   {
-    name: 'Prime Health', category: 'Health', price: '₹7,200', period: '/year',
-    coverage: '₹10 Lakhs', claimRatio: '96%', badge: 'Most Popular', color: 'from-teal to-ins-blue',
-    features: ['Cashless hospitalisation', 'Pre & post hospitalisation', 'Day care procedures', 'No claim bonus 50%', 'Maternity cover'],
+    name: 'Prime Syndicate Health', category: 'Health', price: '₹5.2 Lakhs', period: '/year',
+    coverage: '₹25 Crores', claimRatio: '99.5%', badge: 'Most Popular', color: 'from-teal to-ins-blue',
+    features: ['Global Cashless', 'Private Room Guarantee', 'Air Evacuation', 'Zero-wait OPD', 'Maternity Cover'],
   },
   {
-    name: 'Elite Protect', category: 'Health', price: '₹14,500', period: '/year',
-    coverage: '₹50 Lakhs', claimRatio: '98%', badge: 'Best Value', color: 'from-amber-400 to-orange-500',
-    features: ['Cashless hospitalisation', 'Pre & post hospitalisation', 'Day care procedures', 'No claim bonus 100%', 'Maternity + OPD cover'],
+    name: 'Private Office Health', category: 'Health', price: '₹14.5 Lakhs', period: '/year',
+    coverage: '₹100 Crores', claimRatio: '100%', badge: 'Family Office', color: 'from-amber-400 to-orange-500',
+    features: ['Global Cashless', 'Private Room Guarantee', 'Air Evacuation', 'Zero-wait OPD', 'Experimental Meds'],
+  },
+  
+  // Life
+  {
+    name: 'Generational Secure', category: 'Life', price: '₹12.5 Lakhs', period: '/year',
+    coverage: '₹100 Crores', claimRatio: '99.5%', badge: 'Estate Choice', color: 'from-indigo-400 to-ins-blue',
+    features: ['Zero-wait payout', 'Trust Structuring', 'Terminal Illness', 'Premium Waiver', 'Global Portability'],
+  },
+
+  // Motor
+  {
+    name: 'Exotic Fleet Cover', category: 'Motor', price: '₹4.5 Lakhs', period: '/year',
+    coverage: '₹10 Crores', claimRatio: '99%', badge: 'Hypercar Ready', color: 'from-orange-400 to-red-500',
+    features: ['Agreed Value Settlement', 'OEM Parts Guarantee', 'Global Transit', 'Return to Invoice', 'Engine Protection'],
+  },
+
+  // Home
+  {
+    name: 'Estate & Art Shield', category: 'Home', price: '₹8.5 Lakhs', period: '/year',
+    coverage: '₹50 Crores', claimRatio: '98%', badge: 'Premium Villas', color: 'from-purple-400 to-violet-500',
+    features: ['Fine Art & Jewelry', 'Staff Liability', 'Cyber Extortion', 'Alternative Stay', 'Natural Disasters'],
   },
 ]
 
