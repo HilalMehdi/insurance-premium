@@ -169,7 +169,7 @@ export default function PremiumCalculator() {
               Estimate Your Premium in <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal to-blue-500">Seconds.</span>
             </h2>
             <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)] mb-10 leading-relaxed">
-              Adjust the parameters to get an instant, personalized premium estimate tailored to your exact needs. No paperwork. No waiting.
+              Adjust the parameters to get an instant, personalized premium estimate built for your exact needs. No paperwork. No waiting.
             </p>
 
             {/* Premium CTA Card (Lead Generation) */}

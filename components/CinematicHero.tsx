@@ -99,7 +99,7 @@ export default function CinematicHero() {
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal to-blue-400">Matters Most</span>
         </h1>
         <p className="text-[clamp(1rem,4vw,1.25rem)] text-white/70 max-w-2xl mb-10 leading-relaxed font-light">
-          Experience a new standard of luxury insurance advisory. Tailored plans, absolute security, and peace of mind for you and your family.
+          Experience a new standard of luxury insurance advisory. Custom plans, absolute security, and peace of mind for you and your family.
         </p>
       </div>
 
@@ -130,7 +130,7 @@ export default function CinematicHero() {
               backgroundPosition: '100% 0%'
             }}
           >
-            We believe protection is a fundamental right. Not a luxury. Experience seamless claims, zero hidden clauses, and absolute transparency.
+            We believe protection is a fundamental right. Not a luxury. Experience zero-friction claims, zero hidden clauses, and absolute transparency.
           </h2>
         </div>
       </div>

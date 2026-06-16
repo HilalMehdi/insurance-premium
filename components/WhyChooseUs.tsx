@@ -14,7 +14,7 @@ const stats = [
 const features = [
   { icon: Shield, title: 'Trust & Transparency', desc: 'We compare across 15+ insurers to find the best plan with zero hidden fees.' },
   { icon: Phone,  title: 'Expert Guidance', desc: 'Our dedicated claims team guides you every step for hassle-free settlement.' },
-  { icon: Star,   title: 'Personalized Recommendations', desc: 'Custom tailored plans for individuals, families, and businesses.' },
+  { icon: Star,   title: 'Personalized Recommendations', desc: 'Custom plans for individuals, families, and businesses.' },
   { icon: Zap,    title: 'Fast Processing', desc: 'Get your policy document in minutes. 100% paperless.' },
 ]
 

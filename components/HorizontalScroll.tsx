@@ -13,7 +13,7 @@ const cards = [
   { icon: Clock, title: "Fast Claims", desc: "98% of our claims are settled within 24 hours of submission." },
   { icon: HeadphonesIcon, title: "24/7 Support", desc: "Our dedicated advisory team is available round the clock for emergencies." },
   { icon: TrendingUp, title: "Premium Savings", desc: "Save up to 30% on premiums through our multi-policy discount packages." },
-  { icon: CheckCircle2, title: "Zero Hassle", desc: "100% digital paperwork and seamless onboarding process." }
+  { icon: CheckCircle2, title: "Zero Hassle", desc: "100% digital paperwork and frictionless onboarding process." }
 ]
 
 export default function HorizontalScroll() {

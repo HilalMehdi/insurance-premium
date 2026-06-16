@@ -96,7 +96,7 @@ export default function Founder() {
                 Retiring as an esteemed Officer from the <strong className="text-white/80">New India Assurance Company</strong>, Mr. Anwar Hussain Zaidi brings an unparalleled depth of knowledge to the insurance sector.
               </p>
               <p>
-                With over three decades of hands-on experience in <strong className="text-white/80">underwriting, claims management, and risk assessment</strong>, he understands the intricacies of the Indian insurance landscape like few others.
+                With over three decades of hands-on experience in <strong className="text-white/80">underwriting, claims management, and risk assessment</strong>, he understands the intricacies of the Indian insurance industry like few others.
               </p>
               <p>
                 His philosophy is simple: <em className="text-teal">"Insurance is not just a product - it is a promise of protection when you need it most."</em>

@@ -18,7 +18,7 @@ const testimonials = [
   {
     name: "Dr. Priya Sharma",
     role: "Surgeon",
-    text: "As a medical professional, I thought I understood health coverage. The comprehensive family floater plan recommended here was not only cheaper but offered 2x the coverage.",
+    text: "As a medical professional, I thought I understood health coverage. The full-family floater plan recommended here was not only cheaper but offered 2x the coverage.",
     color: "bg-slate-50"
   },
   {

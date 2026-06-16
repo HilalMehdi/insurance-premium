@@ -8,14 +8,14 @@ import { Heart, Shield, Car, Home, Plane, Briefcase, Building2, Bike } from 'luc
 gsap.registerPlugin(ScrollTrigger)
 
 const cards = [
-  { icon: Heart,     label: 'Health Insurance',    desc: 'Cashless hospitalisation & comprehensive medical coverage for the whole family. Access to 5000+ premium hospitals nationwide.', color: 'from-rose-400 to-pink-500',    bg: '#FFF1F2', span: 'md:col-span-2 md:row-span-2', theme: 'light' },
+  { icon: Heart,     label: 'Health Insurance',    desc: 'Cashless hospitalisation & full medical coverage for the whole family. Access to 5000+ premium hospitals nationwide.', color: 'from-rose-400 to-pink-500',    bg: '#FFF1F2', span: 'md:col-span-2 md:row-span-2', theme: 'light' },
   { icon: Shield,    label: 'Life Insurance',       desc: 'Secure your family\'s financial future.',     color: 'from-indigo-400 to-ins-blue',  bg: '#EEF2FF', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
-  { icon: Car,       label: 'Car Insurance',        desc: 'Third-party & comprehensive coverage.',            color: 'from-amber-400 to-orange-500', bg: '#FFFBEB', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
-  { icon: Building2, label: 'Corporate Insurance',  desc: 'Group health, keyman & employee benefit packages tailored specifically for your organisation\'s scale and needs.',        color: 'from-slate-700 to-[#050505]',    bg: '#ffffff20', span: 'md:col-span-2 md:row-span-1', theme: 'dark' },
-  { icon: Bike,      label: 'Bike Insurance',       desc: 'Mandatory & comprehensive two-wheeler protection.',             color: 'from-green-400 to-teal',       bg: '#F0FDF4', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
+  { icon: Car,       label: 'Car Insurance',        desc: 'Third-party & total coverage.',            color: 'from-amber-400 to-orange-500', bg: '#FFFBEB', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
+  { icon: Building2, label: 'Corporate Insurance',  desc: 'Group health, keyman & employee benefit packages built exactly for your organisation\'s scale and needs.',        color: 'from-slate-700 to-[#050505]',    bg: '#ffffff20', span: 'md:col-span-2 md:row-span-1', theme: 'dark' },
+  { icon: Bike,      label: 'Bike Insurance',       desc: 'Mandatory & total two-wheeler protection.',             color: 'from-green-400 to-teal',       bg: '#F0FDF4', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
   { icon: Home,      label: 'Home Insurance',       desc: 'Protect your home from fire, theft & flood.',               color: 'from-purple-400 to-violet-500', bg: '#F5F3FF', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
   { icon: Plane,     label: 'Travel Insurance',     desc: 'Global coverage for medical & trip cancellation.',     color: 'from-cyan-400 to-teal',        bg: '#ECFEFF', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
-  { icon: Briefcase, label: 'Business Insurance',   desc: 'Comprehensive protection for business assets.',       color: 'from-slate-500 to-slate-700',  bg: '#F8FAFC', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
+  { icon: Briefcase, label: 'Business Insurance',   desc: 'Total protection for business assets.',       color: 'from-slate-500 to-slate-700',  bg: '#F8FAFC', span: 'md:col-span-1 md:row-span-1', theme: 'light' },
 ]
 
 export default function InsuranceCards() {

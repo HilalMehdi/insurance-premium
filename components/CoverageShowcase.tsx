@@ -11,7 +11,7 @@ const coverages = [
     headline: 'Protect Your Sanctuary',
     desc: 'Safeguard your house and valuable belongings against fire, natural disasters, theft, and structural damage with guaranteed full protection.',
     image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&q=80&w=1200',
-    benefits: ['Affordable premiums', 'Quick claim settlement', 'Comprehensive coverage', '24/7 assistance']
+    benefits: ['Affordable premiums', 'Quick claim settlement', 'Total coverage', '24/7 assistance']
   },
   {
     id: 'travel',
@@ -27,9 +27,9 @@ const coverages = [
     icon: Briefcase,
     title: 'Business Insurance',
     headline: 'Secure Your Enterprise',
-    desc: 'Comprehensive protection for offices, startups, and manufacturing units against property damage, public liability, and cyber threats.',
+    desc: 'Total protection for offices, startups, and manufacturing units against property damage, public liability, and cyber threats.',
     image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80&w=1200',
-    benefits: ['Tailored business plans', 'Flexible coverage', 'Expert support', 'Business interruption']
+    benefits: ['Custom business plans', 'Flexible coverage', 'Expert support', 'Business interruption']
   }
 ]
 
@@ -47,7 +47,7 @@ export default function CoverageShowcase() {
           <div className="lg:col-span-4 flex flex-col gap-6 relative">
             {/* The single eyebrow allowed for this entire block */}
             <h2 className="font-serif text-[clamp(2rem,4vw,2.5rem)] font-bold text-[#050505] leading-tight mb-8">
-              Tailored <br/>
+              Built <br/>
               <span className="text-slate-400">For Your Life.</span>
             </h2>
             

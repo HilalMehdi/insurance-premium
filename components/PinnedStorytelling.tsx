@@ -15,12 +15,12 @@ export const stories = [
   },
   {
     title: "Marriage & Family",
-    desc: "Securing your growing family's future with robust life and health insurance plans.",
+    desc: "Securing your growing family's future with ironclad life and health insurance plans.",
     img: "/insurance-premium/images/ai/story_2_marriage_1781532836651.png"
   },
   {
     title: "Buying a Home",
-    desc: "Protecting your biggest investment and most cherished memories with comprehensive home coverage.",
+    desc: "Protecting your biggest investment and most cherished memories with total home coverage.",
     img: "/insurance-premium/images/ai/story_3_home_1781532849339.png"
   },
   {
