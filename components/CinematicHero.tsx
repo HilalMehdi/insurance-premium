@@ -23,7 +23,7 @@ export default function CinematicHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=300%',
+          end: '+=200%',
           scrub: 1.5,
           pin: true,
         }
@@ -34,12 +34,12 @@ export default function CinematicHero() {
       
       // Sequence 2: Bring in the Highlight block & AI Aurora
       tl.fromTo(highlightRef.current, { y: 100, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.2)
-      tl.fromTo('.ai-aurora', { scale: 0.8, opacity: 0 }, { scale: 1.2, opacity: 0.8, ease: 'power2.out', duration: 2 }, 0.2)
+      tl.fromTo('.ai-aurora', { scale: 0.8, opacity: 0 }, { scale: 1.2, opacity: 0.8, ease: 'power2.out', duration: 1.5 }, 0.2)
 
-      // Sequence 3: Scrub the text soft gradient reveal (no harsh polygon clipping)
+      // Sequence 3: Scrub the text soft gradient reveal synchronously
       tl.fromTo('.highlight-mask-video', 
         { backgroundPosition: '200% 0%' },
-        { backgroundPosition: '-100% 0%', ease: 'none' }, 0.4)
+        { backgroundPosition: '-100% 0%', ease: 'none', duration: 1.5 }, 0.2)
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -47,7 +47,7 @@ export default function CinematicHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=300%',
+          end: '+=200%',
           scrub: 1.5,
           pin: true,
         }
@@ -56,11 +56,11 @@ export default function CinematicHero() {
       tl.to(textRef.current, { y: -50, opacity: 0, ease: 'power1.inOut' }, 0)
       
       tl.fromTo(highlightRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.3)
-      tl.fromTo('.ai-aurora', { scale: 0.8, opacity: 0 }, { scale: 1.2, opacity: 0.6, ease: 'power2.out', duration: 2 }, 0.3)
+      tl.fromTo('.ai-aurora', { scale: 0.8, opacity: 0 }, { scale: 1.2, opacity: 0.6, ease: 'power2.out', duration: 1.5 }, 0.3)
       
       tl.fromTo('.highlight-mask-video', 
         { backgroundPosition: '200% 0%' },
-        { backgroundPosition: '-100% 0%', ease: 'none' }, 0.5)
+        { backgroundPosition: '-100% 0%', ease: 'none', duration: 1.5 }, 0.3)
     });
 
     return () => mm.revert();
