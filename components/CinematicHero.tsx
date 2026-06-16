@@ -59,6 +59,7 @@ export default function CinematicHero() {
           loop
           muted
           playsInline
+          poster="/insurance-premium/images/ai/hero_family_1781532809939.png"
           initial={{ scale: 1.15, filter: 'blur(10px)' }}
           animate={{ scale: 1, filter: 'blur(0px)' }}
           transition={{ type: 'spring', stiffness: 40, damping: 20, duration: 2 }}
