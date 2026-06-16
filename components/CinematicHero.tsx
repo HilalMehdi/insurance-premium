@@ -54,14 +54,15 @@ export default function CinematicHero() {
         ref={bgRef}
         className="absolute inset-0 w-full h-full will-change-transform"
       >
-        <motion.img 
+        <motion.video 
+          autoPlay
+          loop
+          muted
+          playsInline
           initial={{ scale: 1.15, filter: 'blur(10px)' }}
           animate={{ scale: 1, filter: 'blur(0px)' }}
           transition={{ type: 'spring', stiffness: 40, damping: 20, duration: 2 }}
-          src="/insurance-premium/images/ai/hero_family_1781532809939.png"
-          alt="BimaKavach Hero"
-          loading="eager"
-          fetchPriority="high"
+          src="/insurance-premium/hero-video.mp4"
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
