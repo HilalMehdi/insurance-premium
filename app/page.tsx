@@ -1,6 +1,9 @@
 import dynamic from 'next/dynamic'
 import Navbar from '@/components/Navbar'
 import CinematicHero from '@/components/CinematicHero'
+import SmoothScroll from '@/components/SmoothScroll'
+import CustomCursor from '@/components/CustomCursor'
+import WebGLBackground from '@/components/WebGLBackground'
 
 // Dynamic imports for heavy GSAP / below-the-fold components
 const PinnedStorytelling = dynamic(() => import('@/components/PinnedStorytelling'))
@@ -22,29 +25,33 @@ const PremiumCalculator = dynamic(() => import('@/components/PremiumCalculator')
 const QuoteForm = dynamic(() => import('@/components/QuoteForm'))
 const Footer = dynamic(() => import('@/components/Footer'))
 
-export default function Home() {
+export default function ActiveTheoryHome() {
   return (
-    <main>
-      <Navbar />
-      <CinematicHero />
-      <PinnedStorytelling />
-      <AppleShieldMorph />
-      <InsuranceCards />
-      <HomeInsurance />
-      <TravelInsurance />
-      <BusinessInsurance />
-      <Comparison />
-      <ClaimProcess />
-      <HorizontalScroll />
-      <StatisticsCounter />
-      <ImageReveal />
-      <TestimonialStack />
-      <Founder />
-      <WhyChooseUs />
-      <FAQ />
-      <PremiumCalculator />
-      <QuoteForm />
-      <Footer />
-    </main>
+    <SmoothScroll>
+      <CustomCursor />
+      <WebGLBackground />
+      <main>
+        <Navbar />
+        <CinematicHero />
+        <PinnedStorytelling />
+        <AppleShieldMorph />
+        <InsuranceCards />
+        <HomeInsurance />
+        <TravelInsurance />
+        <BusinessInsurance />
+        <Comparison />
+        <ClaimProcess />
+        <HorizontalScroll />
+        <StatisticsCounter />
+        <ImageReveal />
+        <TestimonialStack />
+        <Founder />
+        <WhyChooseUs />
+        <FAQ />
+        <PremiumCalculator />
+        <QuoteForm />
+        <Footer />
+      </main>
+    </SmoothScroll>
   )
 }
