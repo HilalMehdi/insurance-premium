@@ -43,7 +43,7 @@ export default function StatisticsCounter() {
     }
   }
 
-  const itemVariants = {
+  const itemVariants: any = {
     hidden: { opacity: 0, y: 30, scale: 0.95, filter: "blur(10px)" },
     visible: { 
       opacity: 1, 

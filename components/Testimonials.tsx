@@ -4,10 +4,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Star, ChevronLeft, ChevronRight, Quote } from 'lucide-react'
 
 const testimonials = [
-  { name: 'Priya Sharma',  role: 'Software Engineer, Bangalore', rating: 5, review: 'InsureShield helped me find the perfect health insurance for my family. The comparison tool saved me ₹12,000 annually! The claim process was incredibly smooth - reimbursed within 5 days.', initials: 'PS', color: 'from-rose-400 to-pink-500' },
-  { name: 'Rajesh Kumar',  role: 'Business Owner, Mumbai',       rating: 5, review: 'After years of struggling with insurance paperwork, InsureShield made everything so simple. Their team guided me through my car insurance claim after an accident. Outstanding 5-star service!', initials: 'RK', color: 'from-ins-blue to-blue-400' },
-  { name: 'Anita Mehta',   role: 'Doctor, Delhi',                rating: 5, review: 'As a medical professional, I understand insurance complexities. InsureShield\'s advisors are incredibly knowledgeable. They got me the best corporate health policy at 30% lower premium.', initials: 'AM', color: 'from-teal to-cyan-400' },
-  { name: 'Vikram Singh',  role: 'Army Officer, Pune',           rating: 5, review: 'Trustworthy, transparent and fast. No hidden clauses, no surprises. InsureShield recommended the right term plan for my family\'s security. The digital process was frictionless.', initials: 'VS', color: 'from-amber-400 to-orange-500' },
+  { name: 'Priya Sharma',  role: 'Software Engineer, Bangalore', rating: 5, review: 'BimaKavach helped me find the perfect health insurance for my family. The comparison tool saved me ₹12,000 annually! The claim process was incredibly smooth - reimbursed within 5 days.', initials: 'PS', color: 'from-rose-400 to-pink-500' },
+  { name: 'Rajesh Kumar',  role: 'Business Owner, Mumbai',       rating: 5, review: 'After years of struggling with insurance paperwork, BimaKavach made everything so simple. Their team guided me through my car insurance claim after an accident. Outstanding 5-star service!', initials: 'RK', color: 'from-ins-blue to-blue-400' },
+  { name: 'Anita Mehta',   role: 'Doctor, Delhi',                rating: 5, review: 'As a medical professional, I understand insurance complexities. BimaKavach\'s advisors are incredibly knowledgeable. They got me the best corporate health policy at 30% lower premium.', initials: 'AM', color: 'from-teal to-cyan-400' },
+  { name: 'Vikram Singh',  role: 'Army Officer, Pune',           rating: 5, review: 'Trustworthy, transparent and fast. No hidden clauses, no surprises. BimaKavach recommended the right term plan for my family\'s security. The digital process was frictionless.', initials: 'VS', color: 'from-amber-400 to-orange-500' },
 ]
 
 export default function Testimonials() {

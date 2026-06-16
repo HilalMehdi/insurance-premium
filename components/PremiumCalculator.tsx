@@ -64,7 +64,7 @@ export default function PremiumCalculator() {
     defaultValues: {
       type: 'Health Insurance',
       age: 30,
-      coverage: 5000000, // 50 Lakhs
+      coverage: 10000000, // 1 Crore
       duration: 1,
       smoker: false,
       medical: false,
@@ -144,9 +144,8 @@ export default function PremiumCalculator() {
   }
 
   // --- CTA Handlers ---
-  const handleWhatsApp = () => {
-    const text = `Hi Anwar Sir, I calculated my estimated ${formValues.type} premium on the BimaKavach website.\n\nCoverage: ${formatINR(formValues.coverage)}\nAge: ${formValues.age}\nEstimated Premium: ₹${premiumData.finalYearly}/year.\n\nI would like to speak with an advisor to understand my exact options.`
-    window.open(`https://wa.me/919412950022?text=${encodeURIComponent(text)}`, '_blank')
+  const handleConsultation = () => {
+    alert("Thank you. Our private concierge desk will contact you within the hour to schedule your exclusive risk audit and consultation.");
   }
 
   return (
@@ -188,11 +187,11 @@ export default function PremiumCalculator() {
 
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <button 
-                  onClick={handleWhatsApp}
+                  onClick={handleConsultation}
                   className="group flex-1 bg-gradient-to-r from-teal to-ins-blue text-white py-3.5 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-teal/20 transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Talk to an Advisor
+                  Schedule Private Consultation
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </button>
                 <button 
@@ -267,15 +266,15 @@ export default function PremiumCalculator() {
                         <div className="relative pt-2 pb-6">
                           <input 
                             type="range" 
-                            min={100000} 
-                            max={50000000} 
-                            step={100000}
+                            min={1000000} 
+                            max={1000000000} 
+                            step={10000000}
                             {...field}
                             className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal hover:accent-teal/80 transition-all"
                           />
                           <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium">
-                            <span>₹1L</span>
-                            <span>₹5Cr</span>
+                            <span>₹10L</span>
+                            <span>₹100Cr</span>
                           </div>
                         </div>
                       )}

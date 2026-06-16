@@ -7,8 +7,8 @@ const faqs = [
   { q: 'How do I choose the right insurance plan?', a: 'Our AI-powered comparison tool analyses your age, health, income, and lifestyle to recommend the most suitable plan. You can also speak with our expert advisors at no cost for personalised guidance.' },
   { q: 'What is the claim process and how long does it take?', a: 'Our 5-step process: Report → Submit Documents → Verification → Approval → Settlement. Cashless claims process within 24–48 hours; reimbursement claims settle within 7 working days.' },
   { q: 'Are there any hidden charges or fees?', a: 'Absolutely not. Our service is completely free for policyholders - we earn a small commission from insurance companies. The premium shown is exactly what you pay, with zero mark-up.' },
-  { q: 'Can I port my existing insurance to InsureShield?', a: 'Yes! We make porting instant without losing any benefits or waiting periods. Our advisors handle all paperwork and ensure zero break in coverage during transition.' },
-  { q: 'Is my personal data safe with InsureShield?', a: 'Your data is encrypted with bank-grade 256-bit SSL encryption. We are IRDAI compliant and never share your information with third parties without your explicit consent.' },
+  { q: 'Can I port my existing insurance to BimaKavach?', a: 'Yes! We make porting instant without losing any benefits or waiting periods. Our advisors handle all paperwork and ensure zero break in coverage during transition.' },
+  { q: 'Is my personal data safe with BimaKavach?', a: 'Your data is encrypted with bank-grade 256-bit SSL encryption. We are IRDAI compliant and never share your information with third parties without your explicit consent.' },
   { q: 'Do you cover pre-existing conditions?', a: 'Many partners offer coverage for pre-existing conditions after a 2–4 year waiting period. Some premium plans offer immediate coverage for certain conditions. Our advisors can guide you to the best option.' },
 ]
 
@@ -23,7 +23,7 @@ export default function FAQ() {
           <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             Got <span className="gradient-text">Questions?</span>
           </h2>
-          <p className="text-slate-500 text-lg">Everything you need to know about insurance with InsureShield.</p>
+          <p className="text-slate-500 text-lg">Everything you need to know about insurance with BimaKavach.</p>
         </motion.div>
 
         <div className="space-y-3">
