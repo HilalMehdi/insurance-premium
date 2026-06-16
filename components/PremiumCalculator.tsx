@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, useMemo } from 'react'
 import { motion, AnimatePresence, useAnimation } from 'framer-motion'
 import { useForm, Controller } from 'react-hook-form'
-import { Calculator, ChevronDown, Activity, User, ShieldCheck, HeartPulse, Clock, Sparkles, MessageCircle, Phone, ArrowRight, ShieldAlert, BadgeCheck } from 'lucide-react'
+import { Calculator, ChevronDown, Activity, User, ShieldCheck, HeartPulse, Clock, Sparkles, MessageCircle, Phone, ArrowRight, ShieldAlert, BadgeCheck, Loader2, CheckCircle } from 'lucide-react'
 
 // --- Custom Animated Counter Component ---
 function AnimatedNumber({ value }: { value: number }) {
@@ -60,6 +60,9 @@ const ADD_ONS = [
 
 export default function PremiumCalculator() {
   const [showBreakdown, setShowBreakdown] = useState(false)
+  const [phone, setPhone] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
   const { control, watch } = useForm<FormValues>({
     defaultValues: {
       type: 'Health Insurance',
@@ -144,8 +147,13 @@ export default function PremiumCalculator() {
   }
 
   // --- CTA Handlers ---
-  const handleConsultation = () => {
-    alert("Thank you. Our private concierge desk will contact you within the hour to schedule your exclusive risk audit and consultation.");
+  const handleConsultation = async () => {
+    if (!phone) return;
+    setIsSubmitting(true);
+    // Simulate CRM API webhook call
+    await new Promise(r => setTimeout(r, 1200));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
   }
 
   return (
@@ -185,23 +193,40 @@ export default function PremiumCalculator() {
                 Our experts can help you compare plans, understand coverage options, and find the absolute best policy for your family's needs.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                <button 
-                  onClick={handleConsultation}
-                  className="group flex-1 bg-gradient-to-r from-teal to-ins-blue text-white py-3.5 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-teal/20 transition-all duration-300 flex items-center justify-center gap-2"
+              {isSubmitted ? (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="bg-teal/10 text-teal-700 p-5 rounded-2xl border border-teal/20 flex gap-4 mb-8 items-start"
                 >
-                  <MessageCircle className="w-5 h-5" />
-                  Schedule Private Consultation
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </button>
-                <button 
-                  onClick={() => document.getElementById('quote')?.scrollIntoView({ behavior: 'smooth' })}
-                  className="flex-1 bg-white border border-slate-200 text-slate-700 py-3.5 px-6 rounded-xl font-semibold hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
-                >
-                  <Phone className="w-4 h-4" />
-                  Request a Callback
-                </button>
-              </div>
+                  <CheckCircle className="w-6 h-6 text-teal shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-teal-800 mb-1">Request Received</h4>
+                    <p className="text-sm font-medium text-teal-700/80">
+                      Our private concierge desk will contact you at <strong className="text-teal-900">{phone}</strong> within the hour.
+                    </p>
+                  </div>
+                </motion.div>
+              ) : (
+                <div className="flex flex-col gap-3 mb-8">
+                  <input 
+                    type="tel"
+                    placeholder="Enter your VIP contact number"
+                    value={phone}
+                    onChange={(e) => setPhone(e.target.value)}
+                    className="w-full bg-white/80 border border-slate-200 rounded-xl py-3.5 px-4 text-navy font-medium focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal transition-all"
+                  />
+                  <button 
+                    onClick={handleConsultation}
+                    disabled={isSubmitting || !phone}
+                    className="group w-full bg-gradient-to-r from-teal to-ins-blue text-white py-3.5 px-6 rounded-xl font-semibold hover:shadow-lg hover:shadow-teal/20 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? <Loader2 className="w-5 h-5 animate-spin" /> : <MessageCircle className="w-5 h-5" />}
+                    {isSubmitting ? 'Securing Slot...' : 'Schedule Private Consultation'}
+                    {!isSubmitting && <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />}
+                  </button>
+                </div>
+              )}
 
               <div className="border-t border-slate-100 pt-5 flex items-center gap-4">
                 <div className="flex -space-x-2">
