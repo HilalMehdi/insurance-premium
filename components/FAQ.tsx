@@ -18,7 +18,7 @@ export default function FAQ() {
   return (
     <section className="section-padding bg-slate-50">
       <div className="max-w-4xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20 }} className="text-center mb-16">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">FAQ</span>
           <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             Got <span className="gradient-text">Questions?</span>
@@ -28,7 +28,7 @@ export default function FAQ() {
 
         <div className="space-y-3">
           {faqs.map((faq, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20, delay: i * 0.06 }}
               className="bg-white rounded-2xl border border-slate-100 shadow-sm overflow-hidden"
             >
               <button
@@ -42,7 +42,7 @@ export default function FAQ() {
               </button>
               <AnimatePresence>
                 {open === i && (
-                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3, ease: 'easeInOut' }}>
+                  <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ type: 'spring', stiffness: 300, damping: 25 }}>
                     <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-50 pt-4">{faq.a}</div>
                   </motion.div>
                 )}

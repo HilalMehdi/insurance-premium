@@ -30,7 +30,7 @@ export default function Comparison() {
   return (
     <section id="compare" className="section-padding bg-slate-50 overflow-x-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20 }} className="text-center mb-12">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">Compare Plans</span>
           <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             Compare Insurance Plans <span className="gradient-text">Easily</span>
@@ -43,17 +43,19 @@ export default function Comparison() {
         {/* Filter tabs */}
         <div className="flex flex-wrap justify-center gap-3 mb-12">
           {filters.map(f => (
-            <button key={f} onClick={() => setActive(f)}
-              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 ${active === f ? 'bg-gradient-to-r from-teal to-ins-blue text-white shadow-lg scale-105' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'}`}
-            >{f}</button>
+            <motion.button key={f} onClick={() => setActive(f)}
+              whileHover={{ scale: 1.05, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+              whileTap={{ scale: 0.95 }}
+              className={`px-6 py-2.5 rounded-full text-sm font-semibold transition-colors duration-300 ${active === f ? 'bg-gradient-to-r from-teal to-ins-blue text-white shadow-lg' : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'}`}
+            >{f}</motion.button>
           ))}
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <AnimatePresence mode="popLayout">
             {filtered.length > 0 ? filtered.map(plan => (
-              <motion.div key={plan.name} layout initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.92 }}
-                className={`relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 border-2 ${plan.badge === 'Most Popular' ? 'border-teal' : 'border-transparent'}`}
+              <motion.div key={plan.name} layout initial={{ opacity: 0, scale: 0.92 }} animate={{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, scale: 0.92 }}
+                className={`relative bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] border-2 ${plan.badge === 'Most Popular' ? 'border-teal' : 'border-transparent'}`}
               >
                 {plan.badge && (
                   <div className={`absolute -top-3.5 left-1/2 -translate-x-1/2 bg-gradient-to-r ${plan.color} text-white text-xs font-bold px-5 py-1.5 rounded-full shadow-lg flex items-center gap-1.5`}>
@@ -80,9 +82,9 @@ export default function Comparison() {
                     </li>
                   ))}
                 </ul>
-                <a href="#calculator" className={`block text-center bg-gradient-to-r ${plan.color} text-white py-3.5 rounded-2xl font-semibold hover:opacity-90 hover:scale-[1.02] transition-all duration-300 shadow-lg`}>
+                <motion.a href="#calculator" whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }} whileTap={{ scale: 0.95 }} className={`block text-center bg-gradient-to-r ${plan.color} text-white py-3.5 rounded-2xl font-semibold shadow-lg`}>
                   Get Expert Guidance
-                </a>
+                </motion.a>
               </motion.div>
             )) : (
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="col-span-3 text-center py-16 text-slate-400">

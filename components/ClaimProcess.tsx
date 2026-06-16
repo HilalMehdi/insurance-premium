@@ -19,7 +19,7 @@ export default function ClaimProcess() {
   return (
     <section id="claims" className="section-padding bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20 }} className="text-center mb-20">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">Easy Claims</span>
           <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             Fast & Hassle-Free <span className="gradient-text">Claims</span>
@@ -39,10 +39,10 @@ export default function ClaimProcess() {
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.15, duration: 0.6 }}
+                transition={{ type: 'spring', stiffness: 80, damping: 20, delay: i * 0.15 }}
                 className="flex flex-col items-center text-center"
               >
-                <motion.div whileHover={{ scale: 1.12, rotate: 6 }} className={`w-20 h-20 bg-gradient-to-br ${color} rounded-3xl flex items-center justify-center mb-5 shadow-xl cursor-default`}>
+                <motion.div whileHover={{ scale: 1.12, rotate: 6, transition: { type: 'spring', stiffness: 400, damping: 10 } }} className={`w-20 h-20 bg-gradient-to-br ${color} rounded-3xl flex items-center justify-center mb-5 shadow-xl cursor-default`}>
                   <Icon className="w-9 h-9 text-white" />
                 </motion.div>
                 <div className={`text-xs font-bold bg-gradient-to-r ${color} bg-clip-text text-transparent mb-2 tracking-wide`}>STEP {step}</div>
@@ -53,10 +53,10 @@ export default function ClaimProcess() {
           </div>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mt-16">
-          <a href="#quote" className="inline-flex items-center gap-2 bg-gradient-to-r from-teal to-ins-blue text-white px-8 py-4 rounded-full font-semibold hover:scale-105 transition-all shadow-xl shadow-teal/20">
+        <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20 }} className="text-center mt-16">
+          <motion.a href="#quote" whileHover={{ scale: 1.05, transition: { type: 'spring', stiffness: 400, damping: 10 } }} whileTap={{ scale: 0.95 }} className="inline-flex items-center gap-2 bg-gradient-to-r from-teal to-ins-blue text-white px-8 py-4 rounded-full font-semibold transition-all shadow-xl shadow-teal/20">
             Start a Claim →
-          </a>
+          </motion.a>
         </motion.div>
       </div>
     </section>

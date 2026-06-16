@@ -27,9 +27,9 @@ export default function InsuranceCards() {
       { y: 50, scale: 0.9, opacity: 0, rotation: 2 },
       { 
         y: 0, scale: 1, opacity: 1, rotation: 0, 
-        duration: 0.8, 
+        duration: 1, 
         stagger: 0.1, 
-        ease: 'power3.out',
+        ease: 'back.out(1.4)',
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top 80%'
@@ -57,7 +57,7 @@ export default function InsuranceCards() {
             <div
               key={label}
               ref={el => { if(el) cardsRef.current[i] = el }}
-              className="group relative bg-white rounded-3xl p-7 border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-400 overflow-hidden cursor-pointer will-change-transform"
+              className="group relative bg-white rounded-3xl p-7 border border-slate-100 shadow-sm hover:shadow-2xl transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] overflow-hidden cursor-pointer hover:-translate-y-2 will-change-transform"
             >
               {/* Hover bg glow */}
               <div className={`absolute inset-0 bg-gradient-to-br ${color} opacity-0 group-hover:opacity-[0.04] transition-opacity duration-400 rounded-3xl`} />

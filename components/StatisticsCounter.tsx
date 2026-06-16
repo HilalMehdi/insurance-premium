@@ -31,8 +31,8 @@ export default function StatisticsCounter() {
           start: 'top 80%',
         },
         innerText: targetValue,
-        duration: 2.5,
-        ease: "power2.out",
+        duration: 3,
+        ease: "expo.out",
         snap: { innerText: 1 }, // Snap to whole numbers
         onUpdate: function() {
           // Format with commas if needed (for 10000)
@@ -49,7 +49,8 @@ export default function StatisticsCounter() {
       },
       y: 50,
       opacity: 0,
-      duration: 1
+      duration: 1.2,
+      ease: 'power3.out'
     })
 
   }, { scope: containerRef })

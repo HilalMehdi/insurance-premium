@@ -24,7 +24,7 @@ function Counter({ end, suffix, label, icon: Icon, trigger }: { end: number; suf
     if (!trigger || !ref.current) return
     gsap.fromTo(ref.current,
       { innerText: 0 },
-      { innerText: end, duration: 2.2, ease: 'power2.out', snap: { innerText: 1 },
+      { innerText: end, duration: 2.5, ease: 'expo.out', snap: { innerText: 1 },
         onUpdate() { if (ref.current) ref.current.textContent = Math.round(+ref.current.innerText).toLocaleString() } }
     )
   }, [trigger, end])
@@ -56,7 +56,7 @@ export default function WhyChooseUs() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20 }} className="text-center mb-20">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">About Us</span>
           <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-white mt-3 leading-tight">
             Your Trusted <span className="gradient-text">Insurance Partner</span>
@@ -66,7 +66,7 @@ export default function WhyChooseUs() {
 
         <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 gap-10 mb-24">
           {stats.map((s, i) => (
-            <motion.div key={s.label} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
+            <motion.div key={s.label} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20, delay: i * 0.1 }}>
               <Counter {...s} trigger={inView} />
             </motion.div>
           ))}
@@ -74,8 +74,8 @@ export default function WhyChooseUs() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {features.map(({ icon: Icon, title, desc }, i) => (
-            <motion.div key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-              className="glass rounded-3xl p-7 hover:bg-white/10 transition-all duration-300 group"
+            <motion.div key={title} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20, delay: i * 0.1 }}
+              className="glass rounded-3xl p-7 hover:bg-white/10 transition-all duration-500 ease-[cubic-bezier(0.34,1.56,0.64,1)] hover:-translate-y-2 group"
             >
               <div className="w-12 h-12 bg-teal/15 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
                 <Icon className="w-6 h-6 text-teal" />

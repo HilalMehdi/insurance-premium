@@ -21,7 +21,7 @@ export default function CinematicHero() {
           trigger: containerRef.current,
           start: 'top top',
           end: 'bottom top',
-          scrub: 1,
+          scrub: 1.5,
           pin: true,
         }
       })
@@ -35,7 +35,7 @@ export default function CinematicHero() {
           trigger: containerRef.current,
           start: 'top top',
           end: 'bottom top',
-          scrub: true,
+          scrub: 1.5,
           pin: true,
         }
       })

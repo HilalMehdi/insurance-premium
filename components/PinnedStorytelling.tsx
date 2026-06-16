@@ -56,7 +56,7 @@ export default function PinnedStorytelling() {
           trigger: containerRef.current,
           start: 'top top',
           end: '+=400%', // 400vh scroll duration
-          scrub: 1,
+          scrub: 1.5,
           pin: true,
         }
       })
@@ -92,7 +92,7 @@ export default function PinnedStorytelling() {
           trigger: containerRef.current,
           start: 'top top',
           end: '+=300%', // shorter pin for mobile
-          scrub: true,
+          scrub: 1.5,
           pin: true,
         }
       })

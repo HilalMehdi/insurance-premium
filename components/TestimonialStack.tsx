@@ -42,7 +42,7 @@ export default function TestimonialStack() {
           trigger: containerRef.current,
           start: 'top 20%',
           end: '+=200%', // 200vh
-          scrub: true,
+          scrub: 1.5,
           pin: true,
         }
       })
@@ -54,7 +54,7 @@ export default function TestimonialStack() {
         // Slide the new card up from below
         tl.fromTo(cardsRef.current[i], 
           { y: '100%', scale: 0.9, opacity: 0, boxShadow: '0 -20px 40px rgba(0,0,0,0.1)' },
-          { y: '0%', scale: 1, opacity: 1, duration: 1, ease: 'power2.inOut' }
+          { y: '0%', scale: 1, opacity: 1, duration: 1, ease: 'power3.out' }
         )
         
         // Slightly shrink and push back the previous card
@@ -64,7 +64,7 @@ export default function TestimonialStack() {
             y: -20,
             filter: 'brightness(0.9)',
             duration: 1,
-            ease: 'power2.inOut'
+            ease: 'power3.out'
           }, "<")
         }
       })
@@ -80,7 +80,8 @@ export default function TestimonialStack() {
           },
           y: 30,
           opacity: 0,
-          duration: 0.6
+          duration: 0.8,
+          ease: 'back.out(1.4)'
         })
       })
     })

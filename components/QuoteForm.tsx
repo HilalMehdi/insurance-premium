@@ -58,7 +58,7 @@ export default function QuoteForm() {
   return (
     <section id="quote" className="section-padding bg-white">
       <div className="max-w-3xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
+        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20 }} className="text-center mb-12">
           <span className="text-teal font-semibold text-sm uppercase tracking-widest">Get a Quote</span>
           <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
             Your Free Quote in <span className="gradient-text block">60 Seconds</span>
@@ -84,7 +84,7 @@ export default function QuoteForm() {
         <div className="bg-white rounded-3xl border border-slate-100 shadow-2xl shadow-slate-100 p-8 md:p-10">
           <AnimatePresence mode="wait">
             {done ? (
-              <motion.div key="done" initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-10">
+              <motion.div key="done" initial={{ opacity: 0, scale: 0.85 }} animate={{ opacity: 1, scale: 1, transition: { type: 'spring', stiffness: 300, damping: 25 } }} className="text-center py-10">
                 <div className="w-20 h-20 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Check className="w-10 h-10 text-success" />
                 </div>
@@ -115,7 +115,7 @@ export default function QuoteForm() {
                 </button>
               </motion.div>
             ) : step === 1 ? (
-              <motion.div key="s1" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
+              <motion.div key="s1" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, x: -30, transition: { duration: 0.2 } }}>
                 <h3 className="font-bold text-navy text-xl mb-6">Step 1 — Select Insurance Type</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {types.map(({ icon: Icon, label, color }) => (
@@ -131,7 +131,7 @@ export default function QuoteForm() {
                 </div>
               </motion.div>
             ) : step === 2 ? (
-              <motion.div key="s2" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
+              <motion.div key="s2" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, x: -30, transition: { duration: 0.2 } }}>
                 <h3 className="font-bold text-navy text-xl mb-6">Step 2 — Personal Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                   {([['name', 'Full Name', 'text', 'Rahul Sharma'], ['phone', 'Phone Number', 'tel', '+91 98765 43210'], ['email', 'Email Address', 'email', 'rahul@email.com'], ['age', 'Your Age', 'number', '32']] as [string, string, string, string][]).map(([k, lbl, t, ph]) => (
@@ -151,7 +151,7 @@ export default function QuoteForm() {
                 </div>
               </motion.div>
             ) : step === 3 ? (
-              <motion.div key="s3" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
+              <motion.div key="s3" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, x: -30, transition: { duration: 0.2 } }}>
                 <h3 className="font-bold text-navy text-xl mb-6">Step 3 — Coverage Requirements</h3>
                 <p className="text-sm text-slate-500 mb-4">Desired Coverage Amount</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
@@ -169,7 +169,7 @@ export default function QuoteForm() {
                 </div>
               </motion.div>
             ) : (
-              <motion.div key="s4" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }}>
+              <motion.div key="s4" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, x: -30, transition: { duration: 0.2 } }}>
                 <h3 className="font-bold text-navy text-xl mb-6">Step 4 — Review & Submit</h3>
                 <div className="bg-slate-50 rounded-2xl p-6 mb-6 space-y-3">
                   {[['Insurance Type', selected], ['Name', form.name || '—'], ['Phone', form.phone || '—'], ['Email', form.email || '—'], ['Age', form.age || '—'], ['Coverage', form.coverage || '—']].map(([l, v]) => (

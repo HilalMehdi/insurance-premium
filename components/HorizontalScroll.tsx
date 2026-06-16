@@ -34,7 +34,7 @@ export default function HorizontalScroll() {
           trigger: sectionRef.current,
           start: 'top top',
           end: `+=${scrollWidth}`, // scroll distance equals the width of the cards
-          scrub: 1,
+          scrub: 1.5,
           pin: true,
         }
       })

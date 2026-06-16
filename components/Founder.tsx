@@ -39,7 +39,7 @@ export default function Founder() {
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ type: 'spring', stiffness: 80, damping: 20 }}
             className="flex flex-col items-center gap-10"
           >
             {/* Portrait frame */}
@@ -72,7 +72,7 @@ export default function Founder() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ type: 'spring', stiffness: 80, damping: 20 }}
           >
             <div className="flex flex-col xl:flex-row xl:items-start justify-between gap-4 mb-6">
               <div>
@@ -83,7 +83,7 @@ export default function Founder() {
               </div>
               <motion.a
                 href="#calculator"
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center justify-center bg-gradient-to-r from-teal to-blue-500 text-white px-6 py-2.5 rounded-full font-bold shadow-lg shadow-teal/20 hover:shadow-teal/40 transition-all whitespace-nowrap text-sm mt-1"
               >
@@ -116,7 +116,8 @@ export default function Founder() {
             {/* CTA */}
             <motion.a
               href="#quote"
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+              whileTap={{ scale: 0.98 }}
               className="inline-flex items-center gap-2 mt-8 bg-gradient-to-r from-teal to-ins-blue text-white px-7 py-3.5 rounded-full font-semibold shadow-xl shadow-teal/20 hover:opacity-90 transition-all"
             >
               Book a Free Consultation →

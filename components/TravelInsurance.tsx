@@ -19,7 +19,7 @@ export default function TravelInsurance() {
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ type: 'spring', stiffness: 80, damping: 20 }}
             className="flex flex-col gap-8 order-1 lg:order-2"
           >
             <div>
@@ -54,7 +54,8 @@ export default function TravelInsurance() {
 
             <motion.a
               href="#quote"
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.03, transition: { type: 'spring', stiffness: 400, damping: 10 } }}
+              whileTap={{ scale: 0.98 }}
               className="inline-flex items-center justify-center gap-2 mt-4 bg-gradient-to-r from-teal to-ins-blue text-white px-8 py-4 rounded-full font-semibold shadow-xl shadow-teal/20 hover:opacity-90 transition-all w-fit"
             >
               Talk to an Advisor →
@@ -65,7 +66,7 @@ export default function TravelInsurance() {
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ type: 'spring', stiffness: 80, damping: 20 }}
             className="relative order-2 lg:order-1"
           >
             <div className="aspect-square rounded-[3rem] overflow-hidden shadow-2xl relative">
