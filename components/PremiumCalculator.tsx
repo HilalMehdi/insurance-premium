@@ -42,11 +42,23 @@ function AnimatedNumber({ value }: { value: number }) {
 // --- Types & Constants ---
 type FormValues = {
   type: string
+  // Life/Health Fields
   age: number
   coverage: number
-  duration: number
   smoker: boolean
   medical: boolean
+  
+  // Motor Fields
+  idv: number
+  vehicleAge: number
+  
+  // Home Fields
+  structureValue: number
+  contentsValue: number
+  propertyAge: number
+
+  // Global
+  duration: number
   addons: Record<string, boolean>
 }
 
@@ -68,6 +80,11 @@ export default function PremiumCalculator() {
       type: 'Health Insurance',
       age: 30,
       coverage: 10000000, // 1 Crore
+      idv: 5000000,       // 50 Lakhs
+      vehicleAge: 3,
+      structureValue: 50000000, // 5 Cr
+      contentsValue: 10000000,  // 1 Cr
+      propertyAge: 5,
       duration: 1,
       smoker: false,
       medical: false,
@@ -77,29 +94,51 @@ export default function PremiumCalculator() {
 
   const formValues = watch()
 
-  // --- Core Calculation Engine ---
+  // --- Core Calculation Engine (IRDAI Inspired Heuristics) ---
   const premiumData = useMemo(() => {
-    const { age, coverage, duration, smoker, medical, addons, type } = formValues
+    const { type, age, coverage, duration, smoker, medical, idv, vehicleAge, structureValue, contentsValue, propertyAge, addons } = formValues
 
-    // Base calculation (approximate generic logic)
-    const baseRate = type === 'Life Insurance' ? 0.001 : 0.0015
-    const base = coverage * baseRate
+    let base = 0
+    let ageAdj = 0
+    let riskAdj = 0
 
-    // Adjustments
-    let ageMulti = 0
-    if (age > 30 && age <= 45) ageMulti = 0.10
-    else if (age > 45 && age <= 60) ageMulti = 0.25
-    else if (age > 60) ageMulti = 0.50
+    if (type === 'Car Insurance') {
+      // Motor Insurance Heuristics
+      const depreciation = Math.min(0.5, vehicleAge * 0.1) // 10% dep per year up to 50% max
+      const depreciatedIdv = idv * (1 - depreciation)
+      const motorRate = 0.03 // 3% of IDV roughly
+      base = depreciatedIdv * motorRate
+      
+      // Age adj is actually vehicle age penalty for maintenance/risk
+      ageAdj = base * (vehicleAge * 0.05) 
+    } 
+    else if (type === 'Home Insurance') {
+      // Property Insurance Heuristics
+      const totalPropValue = structureValue + contentsValue
+      const homeRate = 0.0005 // 0.05% of property value
+      base = totalPropValue * homeRate
 
-    const ageAdj = base * ageMulti
+      // Older properties cost more to insure
+      ageAdj = base * (propertyAge * 0.02)
+    } 
+    else {
+      // Life & Health Heuristics
+      const baseRate = type === 'Life Insurance' ? 0.001 : 0.0015
+      base = coverage * baseRate
 
-    let riskMulti = 0
-    if (smoker) riskMulti += 0.20
-    if (medical) riskMulti += 0.25
-    
-    const riskAdj = base * riskMulti
+      let ageMulti = 0
+      if (age > 30 && age <= 45) ageMulti = 0.10
+      else if (age > 45 && age <= 60) ageMulti = 0.25
+      else if (age > 60) ageMulti = 0.50
+      ageAdj = base * ageMulti
 
-    // Addons
+      let riskMulti = 0
+      if (smoker) riskMulti += 0.20
+      if (medical) riskMulti += 0.25
+      riskAdj = base * riskMulti
+    }
+
+    // Addons cost
     const activeAddons = Object.values(addons || {}).filter(Boolean).length
     const addonCost = base * (activeAddons * 0.05)
 
@@ -116,10 +155,11 @@ export default function PremiumCalculator() {
     const finalMonthly = Math.round(finalYearly / 12)
 
     // Protection Score (0-100)
-    let score = 50 // Base score
-    if (coverage >= 10000000) score += 20 // 1Cr+
-    else if (coverage >= 5000000) score += 10
-    if (duration >= 10) score += 10
+    let score = 50 
+    if (type === 'Car Insurance') score += (idv > 2000000 ? 10 : 0) + (duration > 1 ? 10 : 0)
+    else if (type === 'Home Insurance') score += (structureValue > 10000000 ? 10 : 0) + (duration > 1 ? 10 : 0)
+    else score += (coverage >= 10000000 ? 20 : 0) + (duration >= 10 ? 10 : 0)
+
     score += (activeAddons * 5)
     score = Math.min(100, Math.max(0, score))
 
@@ -129,8 +169,8 @@ export default function PremiumCalculator() {
 
   // Helpers
   const formatINR = (val: number) => {
-    if (val >= 10000000) return `₹${(val / 10000000).toFixed(1)} Crore`
-    if (val >= 100000) return `₹${(val / 100000).toFixed(1)} Lakh`
+    if (val >= 10000000) return `₹${(val / 10000000).toFixed(1).replace('.0', '')} Cr`
+    if (val >= 100000) return `₹${(val / 100000).toFixed(1).replace('.0', '')} L`
     return `₹${val.toLocaleString('en-IN')}`
   }
 
@@ -274,131 +314,200 @@ export default function PremiumCalculator() {
                   />
                 </div>
 
-                {/* Grid for Age & Coverage */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  {/* Coverage Slider */}
-                  <div>
-                    <div className="flex justify-between items-end mb-3">
-                      <label className="text-sm font-bold text-navy">Coverage Amount</label>
-                      <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">
-                        {formatINR(formValues.coverage)}
-                      </span>
-                    </div>
-                    <Controller
-                      name="coverage"
-                      control={control}
-                      render={({ field }) => (
-                        <div className="relative pt-2 pb-6">
-                          <input 
-                            type="range" 
-                            min={1000000} 
-                            max={1000000000} 
-                            step={10000000}
-                            {...field}
-                            className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal hover:accent-teal/80 transition-all"
-                          />
-                          <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium">
-                            <span>₹10L</span>
-                            <span>₹100Cr</span>
+                {/* Dynamic Inputs Based on Type */}
+                <AnimatePresence mode="popLayout">
+                  <motion.div
+                    key={formValues.type}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-8"
+                  >
+                    {/* --- HEALTH & LIFE --- */}
+                    {(formValues.type === 'Health Insurance' || formValues.type === 'Life Insurance') && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          {/* Coverage */}
+                          <div>
+                            <div className="flex justify-between items-end mb-3">
+                              <label className="text-sm font-bold text-navy">Coverage Amount</label>
+                              <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">{formatINR(formValues.coverage)}</span>
+                            </div>
+                            <Controller name="coverage" control={control} render={({ field }) => (
+                              <div className="relative pt-2 pb-6">
+                                <input type="range" min={1000000} max={100000000} step={1000000} {...field} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal" />
+                                <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium"><span>₹10L</span><span>₹10Cr</span></div>
+                              </div>
+                            )} />
+                          </div>
+
+                          {/* Age */}
+                          <div>
+                            <div className="flex justify-between items-end mb-3">
+                              <label className="text-sm font-bold text-navy">Your Age</label>
+                              <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">{formValues.age} Yrs</span>
+                            </div>
+                            <Controller name="age" control={control} render={({ field }) => (
+                              <div className="relative pt-2 pb-6">
+                                <input type="range" min={18} max={80} {...field} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal" />
+                                <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium"><span>18</span><span>80</span></div>
+                              </div>
+                            )} />
                           </div>
                         </div>
-                      )}
-                    />
-                  </div>
-
-                  {/* Age Slider */}
-                  <div>
-                    <div className="flex justify-between items-end mb-3">
-                      <label className="text-sm font-bold text-navy">Your Age</label>
-                      <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">
-                        {formValues.age} Yrs
-                      </span>
-                    </div>
-                    <Controller
-                      name="age"
-                      control={control}
-                      render={({ field }) => (
-                        <div className="relative pt-2 pb-6">
-                          <input 
-                            type="range" 
-                            min={18} 
-                            max={80} 
-                            {...field}
-                            className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal hover:accent-teal/80 transition-all"
-                          />
-                          <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium">
-                            <span>18</span>
-                            <span>80</span>
+                        
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          {/* Lifestyle Factors */}
+                          <div>
+                            <label className="flex items-center gap-2 text-sm font-bold text-navy mb-3">
+                              <Activity className="w-4 h-4 text-teal" /> Lifestyle Factors
+                            </label>
+                            <div className="flex gap-4">
+                              <Controller name="smoker" control={control} render={({ field }) => (
+                                <button type="button" onClick={() => field.onChange(!field.value)} className={`flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all ${field.value ? 'bg-rose-50 border-rose-200 text-rose-600' : 'bg-slate-50 border-slate-100 text-slate-500 hover:bg-slate-100'}`}>Smoker</button>
+                              )} />
+                              <Controller name="medical" control={control} render={({ field }) => (
+                                <button type="button" onClick={() => field.onChange(!field.value)} className={`flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all ${field.value ? 'bg-rose-50 border-rose-200 text-rose-600' : 'bg-slate-50 border-slate-100 text-slate-500 hover:bg-slate-100'}`}>History</button>
+                              )} />
+                            </div>
+                          </div>
+                          
+                          {/* Duration */}
+                          <div>
+                            <label className="flex items-center gap-2 text-sm font-bold text-navy mb-3"><Clock className="w-4 h-4 text-teal" /> Policy Duration</label>
+                            <Controller name="duration" control={control} render={({ field }) => (
+                              <div className="flex gap-2 bg-slate-50 p-1.5 rounded-2xl border border-slate-100">
+                                {[1, 5, 10, 20].map(yrs => (
+                                  <button key={yrs} type="button" onClick={() => field.onChange(yrs)} className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${field.value === yrs ? 'bg-white shadow-sm text-teal border border-slate-200/50' : 'text-slate-500 hover:text-navy'}`}>{yrs}Y</button>
+                                ))}
+                              </div>
+                            )} />
                           </div>
                         </div>
-                      )}
-                    />
-                  </div>
-                </div>
+                      </>
+                    )}
 
-                {/* Duration & Risk Toggles Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                  
-                  {/* Duration */}
-                  <div>
-                    <label className="flex items-center gap-2 text-sm font-bold text-navy mb-3">
-                      <Clock className="w-4 h-4 text-teal" /> Policy Duration
-                    </label>
-                    <Controller
-                      name="duration"
-                      control={control}
-                      render={({ field }) => (
-                        <div className="flex gap-2 bg-slate-50 p-1.5 rounded-2xl border border-slate-100">
-                          {[1, 5, 10, 20].map(yrs => (
-                            <button
-                              key={yrs}
-                              type="button"
-                              onClick={() => field.onChange(yrs)}
-                              className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${field.value === yrs ? 'bg-white shadow-sm text-teal border border-slate-200/50' : 'text-slate-500 hover:text-navy'}`}
-                            >
-                              {yrs}Y
-                            </button>
-                          ))}
+                    {/* --- CAR INSURANCE --- */}
+                    {formValues.type === 'Car Insurance' && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          {/* IDV */}
+                          <div>
+                            <div className="flex justify-between items-end mb-3">
+                              <label className="text-sm font-bold text-navy">Insured Declared Value (IDV)</label>
+                              <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">{formatINR(formValues.idv)}</span>
+                            </div>
+                            <Controller name="idv" control={control} render={({ field }) => (
+                              <div className="relative pt-2 pb-6">
+                                <input type="range" min={100000} max={50000000} step={100000} {...field} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal" />
+                                <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium"><span>₹1L</span><span>₹5Cr</span></div>
+                              </div>
+                            )} />
+                          </div>
+
+                          {/* Vehicle Age */}
+                          <div>
+                            <div className="flex justify-between items-end mb-3">
+                              <label className="text-sm font-bold text-navy">Vehicle Age</label>
+                              <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">{formValues.vehicleAge} Yrs</span>
+                            </div>
+                            <Controller name="vehicleAge" control={control} render={({ field }) => (
+                              <div className="relative pt-2 pb-6">
+                                <input type="range" min={0} max={15} step={1} {...field} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal" />
+                                <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium"><span>New</span><span>15 Yrs</span></div>
+                              </div>
+                            )} />
+                          </div>
                         </div>
-                      )}
-                    />
-                  </div>
 
-                  {/* Risk Profile */}
-                  <div>
-                    <label className="flex items-center gap-2 text-sm font-bold text-navy mb-3">
-                      <Activity className="w-4 h-4 text-teal" /> Lifestyle Factors
-                    </label>
-                    <div className="flex gap-4">
-                      <Controller
-                        name="smoker"
-                        control={control}
-                        render={({ field }) => (
-                          <button
-                            type="button"
-                            onClick={() => field.onChange(!field.value)}
-                            className={`flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all ${field.value ? 'bg-rose-50 border-rose-200 text-rose-600' : 'bg-slate-50 border-slate-100 text-slate-500 hover:bg-slate-100'}`}
-                          >
-                            Smoker
-                          </button>
-                        )}
-                      />
-                      <Controller
-                        name="medical"
-                        control={control}
-                        render={({ field }) => (
-                          <button
-                            type="button"
-                            onClick={() => field.onChange(!field.value)}
-                            className={`flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all ${field.value ? 'bg-rose-50 border-rose-200 text-rose-600' : 'bg-slate-50 border-slate-100 text-slate-500 hover:bg-slate-100'}`}
-                          >
-                            History
-                          </button>
-                        )}
-                      />
-                    </div>
-                  </div>
-                </div>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          {/* Duration */}
+                          <div>
+                            <label className="flex items-center gap-2 text-sm font-bold text-navy mb-3"><Clock className="w-4 h-4 text-teal" /> Policy Duration</label>
+                            <Controller name="duration" control={control} render={({ field }) => (
+                              <div className="flex gap-2 bg-slate-50 p-1.5 rounded-2xl border border-slate-100">
+                                {[1, 3, 5].map(yrs => (
+                                  <button key={yrs} type="button" onClick={() => field.onChange(yrs)} className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${field.value === yrs ? 'bg-white shadow-sm text-teal border border-slate-200/50' : 'text-slate-500 hover:text-navy'}`}>{yrs}Y</button>
+                                ))}
+                              </div>
+                            )} />
+                          </div>
+                        </div>
+                      </>
+                    )}
+
+                    {/* --- HOME INSURANCE --- */}
+                    {formValues.type === 'Home Insurance' && (
+                      <>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          {/* Structure Value */}
+                          <div>
+                            <div className="flex justify-between items-end mb-3">
+                              <label className="text-sm font-bold text-navy">Structure Value</label>
+                              <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">{formatINR(formValues.structureValue)}</span>
+                            </div>
+                            <Controller name="structureValue" control={control} render={({ field }) => (
+                              <div className="relative pt-2 pb-6">
+                                <input type="range" min={5000000} max={500000000} step={5000000} {...field} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal" />
+                                <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium"><span>₹50L</span><span>₹50Cr</span></div>
+                              </div>
+                            )} />
+                          </div>
+
+                          {/* Contents Value */}
+                          <div>
+                            <div className="flex justify-between items-end mb-3">
+                              <label className="text-sm font-bold text-navy">Contents Value</label>
+                              <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">{formatINR(formValues.contentsValue)}</span>
+                            </div>
+                            <Controller name="contentsValue" control={control} render={({ field }) => (
+                              <div className="relative pt-2 pb-6">
+                                <input type="range" min={1000000} max={50000000} step={1000000} {...field} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal" />
+                                <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium"><span>₹10L</span><span>₹5Cr</span></div>
+                              </div>
+                            )} />
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                          {/* Property Age */}
+                          <div>
+                            <div className="flex justify-between items-end mb-3">
+                              <label className="text-sm font-bold text-navy">Property Age</label>
+                              <span className="text-teal font-bold bg-teal/10 px-3 py-1 rounded-lg text-sm">{formValues.propertyAge} Yrs</span>
+                            </div>
+                            <Controller name="propertyAge" control={control} render={({ field }) => (
+                              <div className="relative pt-2 pb-6">
+                                <input type="range" min={0} max={50} step={1} {...field} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-teal" />
+                                <div className="flex justify-between text-xs text-slate-400 mt-2 font-medium"><span>New</span><span>50 Yrs</span></div>
+                              </div>
+                            )} />
+                          </div>
+
+                          {/* Duration */}
+                          <div>
+                            <label className="flex items-center gap-2 text-sm font-bold text-navy mb-3"><Clock className="w-4 h-4 text-teal" /> Policy Duration</label>
+                            <Controller name="duration" control={control} render={({ field }) => (
+                              <div className="flex gap-2 bg-slate-50 p-1.5 rounded-2xl border border-slate-100">
+                                {[1, 5, 10, 20].map(yrs => (
+                                  <button key={yrs} type="button" onClick={() => field.onChange(yrs)} className={`flex-1 py-2 rounded-xl text-sm font-semibold transition-all ${field.value === yrs ? 'bg-white shadow-sm text-teal border border-slate-200/50' : 'text-slate-500 hover:text-navy'}`}>{yrs}Y</button>
+                                ))}
+                              </div>
+                            )} />
+                          </div>
+                        </div>
+                      </>
+                    )}
+                    
+                    {/* --- TRAVEL INSURANCE --- */}
+                    {formValues.type === 'Travel Insurance' && (
+                      <div className="flex items-center justify-center py-10 bg-slate-50 rounded-2xl border border-slate-100">
+                        <p className="text-slate-500 font-medium">Travel Insurance heuristics coming soon. Please contact an advisor.</p>
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
 
               </div>
 
