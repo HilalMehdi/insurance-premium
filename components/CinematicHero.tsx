@@ -90,7 +90,7 @@ export default function CinematicHero() {
       </div>
 
       {/* Hero Content */}
-      <div ref={textRef} className="relative z-10 text-center px-4 md:px-6 max-w-4xl mx-auto pt-20 will-change-transform">
+      <div ref={textRef} className="relative z-10 w-full px-4 md:px-12 lg:px-24 max-w-7xl mx-auto pt-20 will-change-transform text-left">
         <span className="inline-block px-4 py-1.5 rounded-full border border-teal/30 bg-teal/10 text-teal text-sm font-semibold tracking-wider uppercase mb-6 shadow-[0_0_15px_rgba(20,184,166,0.3)]">
           Redefining Protection
         </span>
@@ -98,7 +98,7 @@ export default function CinematicHero() {
           Protect What <br />
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal to-blue-400">Matters Most</span>
         </h1>
-        <p className="text-[clamp(1rem,4vw,1.25rem)] text-white/70 max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+        <p className="text-[clamp(1rem,4vw,1.25rem)] text-white/70 max-w-2xl mb-10 leading-relaxed font-light">
           Experience a new standard of luxury insurance advisory. Tailored plans, absolute security, and peace of mind for you and your family.
         </p>
       </div>
@@ -110,7 +110,7 @@ export default function CinematicHero() {
       </div>
 
       {/* The Highlight Text Reveal (Hidden initially, animates in over the video) */}
-      <div ref={highlightRef} className="absolute inset-0 z-20 flex items-center justify-center px-4 md:px-6 max-w-6xl mx-auto opacity-0 pointer-events-none overflow-hidden">
+      <div ref={highlightRef} className="absolute inset-0 z-20 flex items-center px-4 md:px-12 lg:px-24 max-w-7xl mx-auto opacity-0 pointer-events-none overflow-hidden text-left">
         
         {/* Google Labs Style AI Aurora Background */}
         <div className="ai-aurora absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-3xl aspect-square opacity-0 pointer-events-none mix-blend-screen">
@@ -119,7 +119,7 @@ export default function CinematicHero() {
           <div className="absolute top-1/3 left-1/3 w-80 h-80 bg-fuchsia-500/30 rounded-full mix-blend-screen filter blur-[100px] animate-pulse" />
         </div>
 
-        <div className="relative text-center w-full z-10">
+        <div className="relative text-left w-full max-w-5xl z-10">
           {/* Highlighted Foreground Soft Text Reveal */}
           <h2 
             className="highlight-mask-video text-[clamp(1.75rem,5vw,4.5rem)] font-serif font-bold text-transparent bg-clip-text leading-[1.2]"
