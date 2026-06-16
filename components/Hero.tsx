@@ -101,7 +101,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.65 }}
           className="text-white/55 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Comprehensive insurance solutions for your family, health, vehicle, home, travel, and business — backed by India's top 15+ insurers.
+          Comprehensive insurance solutions for your family, health, vehicle, home, travel, and business - backed by India's top 15+ insurers.
         </motion.p>
 
         <motion.div

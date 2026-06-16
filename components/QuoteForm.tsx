@@ -116,7 +116,7 @@ export default function QuoteForm() {
               </motion.div>
             ) : step === 1 ? (
               <motion.div key="s1" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, x: -30, transition: { duration: 0.2 } }}>
-                <h3 className="font-bold text-navy text-xl mb-6">Step 1 — Select Insurance Type</h3>
+                <h3 className="font-bold text-navy text-xl mb-6">Step 1: Select Insurance Type</h3>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                   {types.map(({ icon: Icon, label, color }) => (
                     <button key={label} onClick={() => { setSelected(label); setStep(2) }}
@@ -132,7 +132,7 @@ export default function QuoteForm() {
               </motion.div>
             ) : step === 2 ? (
               <motion.div key="s2" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, x: -30, transition: { duration: 0.2 } }}>
-                <h3 className="font-bold text-navy text-xl mb-6">Step 2 — Personal Details</h3>
+                <h3 className="font-bold text-navy text-xl mb-6">Step 2: Personal Details</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
                   {([['name', 'Full Name', 'text', 'Rahul Sharma'], ['phone', 'Phone Number', 'tel', '+91 98765 43210'], ['email', 'Email Address', 'email', 'rahul@email.com'], ['age', 'Your Age', 'number', '32']] as [string, string, string, string][]).map(([k, lbl, t, ph]) => (
                     <div key={k}>
@@ -152,7 +152,7 @@ export default function QuoteForm() {
               </motion.div>
             ) : step === 3 ? (
               <motion.div key="s3" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, x: -30, transition: { duration: 0.2 } }}>
-                <h3 className="font-bold text-navy text-xl mb-6">Step 3 — Coverage Requirements</h3>
+                <h3 className="font-bold text-navy text-xl mb-6">Step 3: Coverage Requirements</h3>
                 <p className="text-sm text-slate-500 mb-4">Desired Coverage Amount</p>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-8">
                   {coverageOptions.map(amt => (
@@ -170,9 +170,9 @@ export default function QuoteForm() {
               </motion.div>
             ) : (
               <motion.div key="s4" initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0, transition: { type: 'spring', stiffness: 300, damping: 25 } }} exit={{ opacity: 0, x: -30, transition: { duration: 0.2 } }}>
-                <h3 className="font-bold text-navy text-xl mb-6">Step 4 — Review & Submit</h3>
+                <h3 className="font-bold text-navy text-xl mb-6">Step 4: Review & Submit</h3>
                 <div className="bg-slate-50 rounded-2xl p-6 mb-6 space-y-3">
-                  {[['Insurance Type', selected], ['Name', form.name || '—'], ['Phone', form.phone || '—'], ['Email', form.email || '—'], ['Age', form.age || '—'], ['Coverage', form.coverage || '—']].map(([l, v]) => (
+                  {[['Insurance Type', selected], ['Name', form.name || '-'], ['Phone', form.phone || '-'], ['Email', form.email || '-'], ['Age', form.age || '-'], ['Coverage', form.coverage || '-']].map(([l, v]) => (
                     <div key={l} className="flex justify-between text-sm">
                       <span className="text-slate-500">{l}</span>
                       <span className="font-semibold text-navy">{v}</span>

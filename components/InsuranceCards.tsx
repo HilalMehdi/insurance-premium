@@ -10,7 +10,7 @@ gsap.registerPlugin(ScrollTrigger)
 const cards = [
   { icon: Heart,     label: 'Health Insurance',    desc: 'Cashless hospitalisation & comprehensive medical coverage for the whole family.', color: 'from-rose-400 to-pink-500',    bg: '#FFF1F2' },
   { icon: Shield,    label: 'Life Insurance',       desc: 'Secure your family\'s financial future with term, whole life & ULIP plans.',     color: 'from-indigo-400 to-ins-blue',  bg: '#EEF2FF' },
-  { icon: Car,       label: 'Car Insurance',        desc: 'Third-party & comprehensive coverage — compare 20+ plans instantly.',            color: 'from-amber-400 to-orange-500', bg: '#FFFBEB' },
+  { icon: Car,       label: 'Car Insurance',        desc: 'Third-party & comprehensive coverage - compare 20+ plans instantly.',            color: 'from-amber-400 to-orange-500', bg: '#FFFBEB' },
   { icon: Bike,      label: 'Bike Insurance',       desc: 'Mandatory & comprehensive two-wheeler protection at the best rates.',             color: 'from-green-400 to-teal',       bg: '#F0FDF4' },
   { icon: Home,      label: 'Home Insurance',       desc: 'Protect your home from fire, theft, flood & natural calamities.',               color: 'from-purple-400 to-violet-500', bg: '#F5F3FF' },
   { icon: Plane,     label: 'Travel Insurance',     desc: 'Global coverage for medical emergencies, trip cancellation & lost baggage.',     color: 'from-cyan-400 to-teal',        bg: '#ECFEFF' },
@@ -48,7 +48,7 @@ export default function InsuranceCards() {
             <span className="gradient-text block">One Trusted Partner</span>
           </h2>
           <p className="text-slate-500 text-[clamp(1rem,4vw,1.125rem)] max-w-xl mx-auto">
-            From health to wealth — explore our complete range of insurance solutions for every stage of life.
+            From health to wealth - explore our complete range of insurance solutions for every stage of life.
           </p>
         </div>
 

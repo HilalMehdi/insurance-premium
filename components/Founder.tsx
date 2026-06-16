@@ -34,7 +34,7 @@ export default function Founder() {
         </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Left — avatar + badge + CTA Button */}
+          {/* Left - avatar + badge + CTA Button */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -67,7 +67,7 @@ export default function Founder() {
 
           </motion.div>
 
-          {/* Right — bio */}
+          {/* Right - bio */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -99,7 +99,7 @@ export default function Founder() {
                 With over three decades of hands-on experience in <strong className="text-white/80">underwriting, claims management, and risk assessment</strong>, he understands the intricacies of the Indian insurance landscape like few others.
               </p>
               <p>
-                His philosophy is simple: <em className="text-teal">"Insurance is not just a product — it is a promise of protection when you need it most."</em>
+                His philosophy is simple: <em className="text-teal">"Insurance is not just a product - it is a promise of protection when you need it most."</em>
               </p>
             </div>
 

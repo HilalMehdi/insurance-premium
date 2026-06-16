@@ -88,7 +88,7 @@ export default function Comparison() {
               </motion.div>
             )) : (
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="col-span-3 text-center py-16 text-slate-400">
-                <p className="text-lg">No plans available for this category yet — check back soon!</p>
+                <p className="text-lg">No plans available for this category yet - check back soon!</p>
               </motion.div>
             )}
           </AnimatePresence>
