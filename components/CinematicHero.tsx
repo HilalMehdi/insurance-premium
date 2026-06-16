@@ -64,7 +64,8 @@ export default function CinematicHero() {
           animate={{ scale: 1, filter: 'blur(0px)' }}
           transition={{ type: 'spring', stiffness: 40, damping: 20, duration: 2 }}
           src="/insurance-premium/hero-video.mp4"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />
         <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
       </div>
