@@ -31,20 +31,20 @@ export default function ActiveTheoryHome() {
       <main>
         <Navbar />
         <CinematicHero />
+        <StatisticsCounter />
         <PinnedStorytelling />
+        <WhyChooseUs />
         <AppleShieldMorph />
         <InsuranceCards />
         <CoverageShowcase />
-        <Comparison />
         <ClaimProcess />
         <HorizontalScroll />
-        <StatisticsCounter />
+        <Comparison />
         <ImageReveal />
-        <TestimonialStack />
         <Founder />
-        <WhyChooseUs />
-        <FAQ />
+        <TestimonialStack />
         <PremiumCalculator />
+        <FAQ />
         <QuoteForm />
         <Footer />
       </main>
