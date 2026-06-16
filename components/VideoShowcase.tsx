@@ -41,7 +41,7 @@ export default function VideoShowcase() {
           {/* REPLACE src="/hero-video.mp4" with your custom video path (e.g. src="/my-video.mp4") once you upload it to the public folder */}
           <video 
             ref={videoRef}
-            src="/hero-video.mp4" 
+            src="/my-awesome-video.mp4" 
             className="w-full h-full object-cover"
             playsInline
             loop
