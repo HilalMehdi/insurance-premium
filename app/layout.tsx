@@ -15,9 +15,9 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'BimaKavach - Premium Insurance Advisory',
     description: 'Secure your family\'s future with expert insurance guidance. 30+ years of trusted experience.',
-    url: 'https://hilalmehdi.github.io/insurance-premium/',
+    url: 'https://insurance-premium.vercel.app/',
     siteName: 'BimaKavach',
-    images: [{ url: '/insurance-premium/images/ai/hero_family_1781532809939.png', width: 1200, height: 630 }],
+    images: [{ url: '/images/ai/hero_family_1781532809939.png', width: 1200, height: 630 }],
     locale: 'en_IN',
     type: 'website',
   },
@@ -25,10 +25,10 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'BimaKavach - Premium Insurance Advisory',
     description: 'Secure your family\'s future with expert insurance guidance. 30+ years of trusted experience.',
-    images: ['/insurance-premium/images/ai/hero_family_1781532809939.png'],
+    images: ['/images/ai/hero_family_1781532809939.png'],
   },
   alternates: {
-    canonical: 'https://hilalmehdi.github.io/insurance-premium/',
+    canonical: 'https://insurance-premium.vercel.app/',
   }
 }
 
@@ -37,9 +37,9 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FinancialService',
   name: 'BimaKavach',
-  image: 'https://hilalmehdi.github.io/insurance-premium/images/ai/hero_family_1781532809939.png',
-  '@id': 'https://hilalmehdi.github.io/insurance-premium/',
-  url: 'https://hilalmehdi.github.io/insurance-premium/',
+  image: 'https://insurance-premium.vercel.app/images/ai/hero_family_1781532809939.png',
+  '@id': 'https://insurance-premium.vercel.app/',
+  url: 'https://insurance-premium.vercel.app/',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Dehradun',

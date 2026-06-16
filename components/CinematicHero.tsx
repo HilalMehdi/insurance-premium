@@ -78,11 +78,11 @@ export default function CinematicHero() {
           loop
           muted
           playsInline
-          poster="/insurance-premium/images/ai/hero_family_1781532809939.png"
+          poster="/images/ai/hero_family_1781532809939.png"
           initial={{ scale: 1.15 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 40, damping: 20, duration: 2 }}
-          src="/insurance-premium/hero-video.mp4"
+          src="/hero-video.mp4"
           className="absolute inset-0 w-full h-full"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />

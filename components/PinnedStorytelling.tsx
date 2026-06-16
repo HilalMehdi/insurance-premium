@@ -11,32 +11,32 @@ export const stories = [
   {
     title: "Starting Your Career",
     desc: "Building a solid financial foundation and health coverage as a young professional.",
-    img: "/insurance-premium/images/ai/story_1_career_1781532823001.png"
+    img: "/images/ai/story_1_career_1781532823001.png"
   },
   {
     title: "Marriage & Family",
     desc: "Securing your growing family's future with ironclad life and health insurance plans.",
-    img: "/insurance-premium/images/ai/story_2_marriage_1781532836651.png"
+    img: "/images/ai/story_2_marriage_1781532836651.png"
   },
   {
     title: "Buying a Home",
     desc: "Protecting your biggest investment and most cherished memories with total home coverage.",
-    img: "/insurance-premium/images/ai/story_3_home_1781532849339.png"
+    img: "/images/ai/story_3_home_1781532849339.png"
   },
   {
     title: "Children's Education",
     desc: "Guaranteeing their dreams remain uninterrupted with dedicated education planning.",
-    img: "/insurance-premium/images/ai/story_4_education_1781532869133.png"
+    img: "/images/ai/story_4_education_1781532869133.png"
   },
   {
     title: "Growing Your Business",
     desc: "Customized corporate solutions designed to mitigate risks and secure your enterprise.",
-    img: "/insurance-premium/images/ai/story_5_business_1781532880854.png"
+    img: "/images/ai/story_5_business_1781532880854.png"
   },
   {
     title: "Retirement Planning",
     desc: "Enjoying your golden years with complete peace of mind and lifetime financial security.",
-    img: "/insurance-premium/images/ai/story_6_retirement_1781532894656.png"
+    img: "/images/ai/story_6_retirement_1781532894656.png"
   }
 ]
 
