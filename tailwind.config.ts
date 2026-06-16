@@ -9,14 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        navy: '#0F172A',
+        navy: '#050505',
         'ins-blue': '#1E3A8A',
         teal: '#14B8A6',
         success: '#10B981',
       },
       fontFamily: {
-        serif: ['Playfair Display', 'serif'],
-        sans: ['Inter', 'sans-serif'],
+        serif: ['var(--font-outfit)', 'sans-serif'],
+        sans: ['var(--font-inter)', 'sans-serif'],
       },
       animation: {
         'marquee': 'marquee 35s linear infinite',

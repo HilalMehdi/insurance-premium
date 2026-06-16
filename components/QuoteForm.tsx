@@ -181,11 +181,14 @@ export default function QuoteForm() {
                 </div>
                 <div className="flex gap-3">
                   <button onClick={() => setStep(3)} className="px-6 py-3 rounded-xl border border-slate-200 text-slate-600 hover:bg-slate-50 transition-all font-medium">← Back</button>
-                  <button onClick={handleSubmit}
-                    className="flex-1 bg-gradient-to-r from-teal to-ins-blue text-white py-3.5 rounded-xl font-semibold hover:opacity-90 hover:scale-[1.02] transition-all shadow-xl shadow-teal/20 text-lg"
+                  <motion.button 
+                    whileHover={{ scale: 1.02 }} 
+                    whileTap={{ scale: 0.98 }} 
+                    onClick={handleSubmit}
+                    className="flex-1 bg-gradient-to-r from-teal to-ins-blue text-white py-3.5 rounded-xl font-semibold shadow-xl shadow-teal/20 text-lg"
                   >
                     🚀 Get My Free Quotes
-                  </button>
+                  </motion.button>
                 </div>
               </motion.div>
             )}

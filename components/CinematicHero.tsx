@@ -86,7 +86,7 @@ export default function CinematicHero() {
           className="absolute inset-0 w-full h-full"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
         />
-        <div className="absolute inset-0 bg-navy/60 backdrop-blur-[2px]"></div>
+        <div className="absolute inset-0 bg-[#050505]/70 backdrop-blur-[12px] border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition-all duration-1000"></div>
       </div>
 
       {/* Hero Content */}

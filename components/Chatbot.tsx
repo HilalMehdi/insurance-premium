@@ -160,13 +160,15 @@ export default function Chatbot() {
                   placeholder="Ask about insurance..."
                   className="w-full pl-4 pr-12 py-3 bg-slate-50 rounded-xl outline-none border border-slate-200 focus:border-teal transition-colors text-sm text-navy"
                 />
-                <button 
+                <motion.button 
+                  whileHover={{ scale: 1.05 }} 
+                  whileTap={{ scale: 0.95 }}
                   type="submit"
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-2 w-8 h-8 flex items-center justify-center bg-teal text-white rounded-lg hover:bg-ins-blue transition-colors disabled:opacity-50"
+                  className="absolute right-2 w-8 h-8 flex items-center justify-center bg-teal text-white rounded-lg disabled:opacity-50"
                 >
                   <Send className="w-4 h-4" />
-                </button>
+                </motion.button>
               </div>
             </form>
           </motion.div>
