@@ -33,7 +33,19 @@ export default function WebGLBackground() {
 
     let animationFrame: number
 
-    const draw = () => {
+    const isMobile = window.innerWidth < 768
+    const maxGrain = isMobile ? 100 : 500 // Dramatically reduce grain count on mobile
+
+    let lastDrawTime = 0
+    const fpsLimit = isMobile ? 30 : 60 // Cap framerate to save battery on mobile
+    const frameInterval = 1000 / fpsLimit
+
+    const draw = (timestamp: number) => {
+      animationFrame = requestAnimationFrame(draw)
+
+      if (timestamp - lastDrawTime < frameInterval) return
+      lastDrawTime = timestamp
+
       // Lerp for smooth following
       currentX += (mouseX - currentX) * 0.05
       currentY += (mouseY - currentY) * 0.05
@@ -51,14 +63,12 @@ export default function WebGLBackground() {
 
       // Add grain effect
       ctx.fillStyle = 'rgba(255,255,255,0.01)'
-      for (let i = 0; i < 500; i++) {
+      for (let i = 0; i < maxGrain; i++) {
         ctx.fillRect(Math.random() * w, Math.random() * h, 1, 1)
       }
-
-      animationFrame = requestAnimationFrame(draw)
     }
 
-    draw()
+    animationFrame = requestAnimationFrame(draw)
 
     return () => {
       window.removeEventListener('mousemove', handleMouseMove)

@@ -5,8 +5,14 @@ import { motion } from 'framer-motion'
 export default function CustomCursor() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isHovering, setIsHovering] = useState(false)
+  const [isDesktop, setIsDesktop] = useState(true)
 
   useEffect(() => {
+    // Only enable custom cursor on devices with a precise pointer (mouse)
+    const mediaQuery = window.matchMedia('(pointer: fine)')
+    setIsDesktop(mediaQuery.matches)
+    
+    if (!mediaQuery.matches) return
     const updateMousePosition = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY })
     }
@@ -29,10 +35,14 @@ export default function CustomCursor() {
     window.addEventListener('mouseover', handleMouseOver)
 
     return () => {
-      window.removeEventListener('mousemove', updateMousePosition)
-      window.removeEventListener('mouseover', handleMouseOver)
+      if (mediaQuery.matches) {
+        window.removeEventListener('mousemove', updateMousePosition)
+        window.removeEventListener('mouseover', handleMouseOver)
+      }
     }
   }, [])
+
+  if (!isDesktop) return null
 
   return (
     <>
