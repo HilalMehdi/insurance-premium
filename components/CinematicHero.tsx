@@ -13,6 +13,8 @@ export default function CinematicHero() {
   const bgRef = useRef<HTMLDivElement>(null)
   const textRef = useRef<HTMLDivElement>(null)
 
+  const highlightRef = useRef<HTMLDivElement>(null)
+
   useGSAP(() => {
     let mm = gsap.matchMedia();
 
@@ -21,13 +23,22 @@ export default function CinematicHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: 'bottom top',
+          end: '+=150%',
           scrub: 1.5,
           pin: true,
         }
       })
-      tl.to(bgRef.current, { scale: 1.2, opacity: 0.6, ease: 'none' }, 0)
-      tl.to(textRef.current, { y: -150, opacity: 0, scale: 0.9, ease: 'none' }, 0)
+      // Sequence 1: Video scales/dims, Hero Text fades up & out
+      tl.to(bgRef.current, { scale: 1.05, opacity: 0.3, ease: 'power1.inOut' }, 0)
+      tl.to(textRef.current, { y: -150, opacity: 0, scale: 0.9, ease: 'power1.inOut' }, 0)
+      
+      // Sequence 2: Bring in the Highlight block
+      tl.fromTo(highlightRef.current, { y: 100, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.2)
+
+      // Sequence 3: Scrub the text gradient mask
+      tl.fromTo('.highlight-mask-video', 
+        { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' },
+        { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'none' }, 0.4)
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -35,13 +46,19 @@ export default function CinematicHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: 'bottom top',
+          end: '+=150%',
           scrub: 1.5,
           pin: true,
         }
       })
-      tl.to(bgRef.current, { scale: 1.05, opacity: 0.8, ease: 'none' }, 0)
-      tl.to(textRef.current, { y: -50, opacity: 0, ease: 'none' }, 0)
+      tl.to(bgRef.current, { scale: 1.05, opacity: 0.4, ease: 'power1.inOut' }, 0)
+      tl.to(textRef.current, { y: -50, opacity: 0, ease: 'power1.inOut' }, 0)
+      
+      tl.fromTo(highlightRef.current, { y: 50, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.3)
+      
+      tl.fromTo('.highlight-mask-video', 
+        { clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' },
+        { clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)', ease: 'none' }, 0.5)
     });
 
     return () => mm.revert();
@@ -88,6 +105,24 @@ export default function CinematicHero() {
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-10 opacity-70">
         <span className="text-xs text-white uppercase tracking-widest font-semibold">Scroll to explore</span>
         <div className="w-[1px] h-12 bg-gradient-to-b from-white to-transparent"></div>
+      </div>
+
+      {/* The Highlight Text Reveal (Hidden initially, animates in over the video) */}
+      <div ref={highlightRef} className="absolute inset-0 z-20 flex items-center justify-center px-4 md:px-6 max-w-6xl mx-auto opacity-0 pointer-events-none">
+        <div className="relative text-center w-full">
+          {/* Faded Background Text */}
+          <h2 className="text-[clamp(1.75rem,5vw,4.5rem)] font-serif font-bold text-white/20 leading-[1.2]">
+            We believe protection is a fundamental right. Not a luxury. Experience seamless claims, zero hidden clauses, and absolute transparency.
+          </h2>
+          
+          {/* Highlighted Foreground Text Mask */}
+          <h2 
+            className="highlight-mask-video absolute top-0 left-0 w-full text-[clamp(1.75rem,5vw,4.5rem)] font-serif font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal to-blue-400 leading-[1.2]"
+            style={{ clipPath: 'polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%)' }}
+          >
+            We believe protection is a fundamental right. Not a luxury. Experience seamless claims, zero hidden clauses, and absolute transparency.
+          </h2>
+        </div>
       </div>
     </section>
   )
