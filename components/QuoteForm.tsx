@@ -59,8 +59,7 @@ export default function QuoteForm() {
     <section id="quote" className="section-padding bg-white">
       <div className="max-w-3xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ type: 'spring', stiffness: 80, damping: 20 }} className="text-center mb-12">
-          <span className="text-teal font-semibold text-sm uppercase tracking-widest">Get a Quote</span>
-          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mt-3 mb-4 leading-tight">
+          <h2 className="font-serif text-[clamp(2rem,6vw,3rem)] font-bold text-navy mb-4 leading-tight">
             Your Free Quote in <span className="gradient-text block">60 Seconds</span>
           </h2>
         </motion.div>

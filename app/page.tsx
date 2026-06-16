@@ -10,9 +10,7 @@ const PinnedStorytelling = dynamic(() => import('@/components/PinnedStorytelling
 const AppleShieldMorph = dynamic(() => import('@/components/AppleShieldMorph'))
 const InsuranceCards = dynamic(() => import('@/components/InsuranceCards'))
 const HorizontalScroll = dynamic(() => import('@/components/HorizontalScroll'))
-const HomeInsurance = dynamic(() => import('@/components/HomeInsurance'))
-const TravelInsurance = dynamic(() => import('@/components/TravelInsurance'))
-const BusinessInsurance = dynamic(() => import('@/components/BusinessInsurance'))
+const CoverageShowcase = dynamic(() => import('@/components/CoverageShowcase'))
 const Comparison = dynamic(() => import('@/components/Comparison'))
 const ClaimProcess = dynamic(() => import('@/components/ClaimProcess'))
 const StatisticsCounter = dynamic(() => import('@/components/StatisticsCounter'))
@@ -36,9 +34,7 @@ export default function ActiveTheoryHome() {
         <PinnedStorytelling />
         <AppleShieldMorph />
         <InsuranceCards />
-        <HomeInsurance />
-        <TravelInsurance />
-        <BusinessInsurance />
+        <CoverageShowcase />
         <Comparison />
         <ClaimProcess />
         <HorizontalScroll />
