@@ -23,7 +23,7 @@ export default function CinematicHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=200%',
+          end: '+=120%',
           scrub: 1.5,
           pin: true,
         }
@@ -36,10 +36,10 @@ export default function CinematicHero() {
       tl.fromTo(highlightRef.current, { y: 100, opacity: 0 }, { y: 0, opacity: 1, ease: 'power1.out' }, 0.2)
       tl.fromTo('.ai-aurora', { scale: 0.8, opacity: 0 }, { scale: 1.2, opacity: 0.8, ease: 'power2.out', duration: 1.5 }, 0.2)
 
-      // Sequence 3: Scrub the text soft gradient reveal synchronously
+      // Sequence 3: Scrub the text soft gradient reveal
       tl.fromTo('.highlight-mask-video', 
-        { backgroundPosition: '200% 0%' },
-        { backgroundPosition: '-100% 0%', ease: 'none', duration: 1.5 }, 0.2)
+        { backgroundPosition: '100% 0%' },
+        { backgroundPosition: '0% 0%', ease: 'none', duration: 1.5 }, 0.2)
     });
 
     mm.add("(max-width: 767px)", () => {
@@ -47,7 +47,7 @@ export default function CinematicHero() {
         scrollTrigger: {
           trigger: containerRef.current,
           start: 'top top',
-          end: '+=200%',
+          end: '+=120%',
           scrub: 1.5,
           pin: true,
         }
@@ -59,8 +59,8 @@ export default function CinematicHero() {
       tl.fromTo('.ai-aurora', { scale: 0.8, opacity: 0 }, { scale: 1.2, opacity: 0.6, ease: 'power2.out', duration: 1.5 }, 0.3)
       
       tl.fromTo('.highlight-mask-video', 
-        { backgroundPosition: '200% 0%' },
-        { backgroundPosition: '-100% 0%', ease: 'none', duration: 1.5 }, 0.3)
+        { backgroundPosition: '100% 0%' },
+        { backgroundPosition: '0% 0%', ease: 'none', duration: 1.5 }, 0.3)
     });
 
     return () => mm.revert();
@@ -124,10 +124,10 @@ export default function CinematicHero() {
           <h2 
             className="highlight-mask-video text-[clamp(1.75rem,5vw,4.5rem)] font-serif font-bold text-transparent bg-clip-text leading-[1.2]"
             style={{ 
-              backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.1) 40%, #2dd4bf 50%, #60a5fa 60%, rgba(255,255,255,0.1) 100%)',
-              backgroundSize: '200% 100%',
+              backgroundImage: 'linear-gradient(to right, #ffffff 0%, #ffffff 33%, #60a5fa 45%, #2dd4bf 55%, rgba(255,255,255,0.1) 66%, rgba(255,255,255,0.1) 100%)',
+              backgroundSize: '300% 100%',
               backgroundRepeat: 'no-repeat',
-              backgroundPosition: '200% 0%'
+              backgroundPosition: '100% 0%'
             }}
           >
             We believe protection is a fundamental right. Not a luxury. Experience seamless claims, zero hidden clauses, and absolute transparency.
