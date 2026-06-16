@@ -13,7 +13,7 @@ const HorizontalScroll = dynamic(() => import('@/components/HorizontalScroll'))
 const CoverageShowcase = dynamic(() => import('@/components/CoverageShowcase'))
 const Comparison = dynamic(() => import('@/components/Comparison'))
 const ClaimProcess = dynamic(() => import('@/components/ClaimProcess'))
-const StatisticsCounter = dynamic(() => import('@/components/StatisticsCounter'))
+const VideoShowcase = dynamic(() => import('@/components/VideoShowcase'))
 const ImageReveal = dynamic(() => import('@/components/ImageReveal'))
 const TestimonialStack = dynamic(() => import('@/components/TestimonialStack'))
 const Founder = dynamic(() => import('@/components/Founder'))
@@ -31,7 +31,7 @@ export default function ActiveTheoryHome() {
       <main>
         <Navbar />
         <CinematicHero />
-        <StatisticsCounter />
+        <VideoShowcase />
         <PinnedStorytelling />
         <WhyChooseUs />
         <AppleShieldMorph />
