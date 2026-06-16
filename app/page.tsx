@@ -6,6 +6,7 @@ import CustomCursor from '@/components/CustomCursor'
 import WebGLBackground from '@/components/WebGLBackground'
 
 // Dynamic imports for heavy GSAP / below-the-fold components
+const ScrollHighlightText = dynamic(() => import('@/components/ScrollHighlightText'))
 const PinnedStorytelling = dynamic(() => import('@/components/PinnedStorytelling'))
 const AppleShieldMorph = dynamic(() => import('@/components/AppleShieldMorph'))
 const InsuranceCards = dynamic(() => import('@/components/InsuranceCards'))
@@ -33,6 +34,7 @@ export default function ActiveTheoryHome() {
       <main>
         <Navbar />
         <CinematicHero />
+        <ScrollHighlightText />
         <PinnedStorytelling />
         <AppleShieldMorph />
         <InsuranceCards />
