@@ -8,39 +8,69 @@ const filters = ['All', 'Health', 'Life', 'Motor', 'Home']
 const plans = [
   // Health
   {
-    name: 'Global Concierge Health', category: 'Health', price: '₹2.5 Lakhs', period: '/year',
-    coverage: '₹10 Crores', claimRatio: '99%', badge: null, color: 'from-slate-400 to-slate-600',
-    features: ['Global Cashless', 'Private Room Guarantee', 'Air Evacuation', null, null],
+    name: 'HDFC ERGO Optima Secure', category: 'Health', price: '₹85,000', period: '/year',
+    coverage: '₹2 Crores', claimRatio: '98.5%', badge: 'Most Popular', color: 'from-red-500 to-red-700',
+    features: ['Global Cashless', 'Private Room', 'Air Evacuation', '2X Coverage Guarantee', 'Maternity Cover'],
   },
   {
-    name: 'Prime Syndicate Health', category: 'Health', price: '₹5.2 Lakhs', period: '/year',
-    coverage: '₹25 Crores', claimRatio: '99.5%', badge: 'Most Popular', color: 'from-teal to-ins-blue',
-    features: ['Global Cashless', 'Private Room Guarantee', 'Air Evacuation', 'Zero-wait OPD', 'Maternity Cover'],
+    name: 'Star Health Premier', category: 'Health', price: '₹1.2 Lakhs', period: '/year',
+    coverage: '₹5 Crores', claimRatio: '99.1%', badge: 'Best Value', color: 'from-blue-400 to-blue-600',
+    features: ['Global Cashless', 'Private Room', 'Air Evacuation', 'No Claim Bonus 100%', 'OPD Consultations'],
   },
   {
-    name: 'Private Office Health', category: 'Health', price: '₹14.5 Lakhs', period: '/year',
-    coverage: '₹100 Crores', claimRatio: '100%', badge: 'Family Office', color: 'from-amber-400 to-orange-500',
+    name: 'BimaKavach Concierge Health', category: 'Health', price: '₹5.5 Lakhs', period: '/year',
+    coverage: '₹50 Crores', claimRatio: '100%', badge: 'Ultra HNI', color: 'from-teal to-ins-blue',
     features: ['Global Cashless', 'Private Room Guarantee', 'Air Evacuation', 'Zero-wait OPD', 'Experimental Meds'],
   },
   
   // Life
   {
-    name: 'Generational Secure', category: 'Life', price: '₹12.5 Lakhs', period: '/year',
-    coverage: '₹100 Crores', claimRatio: '99.5%', badge: 'Estate Choice', color: 'from-indigo-400 to-ins-blue',
+    name: 'LIC Tech Term', category: 'Life', price: '₹45,000', period: '/year',
+    coverage: '₹5 Crores', claimRatio: '98.5%', badge: null, color: 'from-blue-500 to-indigo-600',
+    features: ['Death Benefit', 'Terminal Illness', 'Accidental Rider', 'Premium Waiver', null],
+  },
+  {
+    name: 'Max Life Smart Secure', category: 'Life', price: '₹1.5 Lakhs', period: '/year',
+    coverage: '₹20 Crores', claimRatio: '99.3%', badge: 'Best Value', color: 'from-slate-600 to-slate-800',
+    features: ['Death Benefit', 'Trust Structuring', 'Terminal Illness', 'Premium Waiver', 'Return of Premium'],
+  },
+  {
+    name: 'HDFC Life Click 2 Protect', category: 'Life', price: '₹4.5 Lakhs', period: '/year',
+    coverage: '₹50 Crores', claimRatio: '99.5%', badge: 'Estate Choice', color: 'from-red-500 to-red-700',
     features: ['Zero-wait payout', 'Trust Structuring', 'Terminal Illness', 'Premium Waiver', 'Global Portability'],
   },
 
   // Motor
   {
-    name: 'Exotic Fleet Cover', category: 'Motor', price: '₹4.5 Lakhs', period: '/year',
-    coverage: '₹10 Crores', claimRatio: '99%', badge: 'Hypercar Ready', color: 'from-orange-400 to-red-500',
+    name: 'Tata AIG Auto Secure', category: 'Motor', price: '₹1.2 Lakhs', period: '/year',
+    coverage: '₹2 Crores', claimRatio: '98%', badge: null, color: 'from-blue-600 to-blue-800',
+    features: ['Zero Depreciation', 'Consumables Cover', 'Engine Protection', 'Roadside Assistance', null],
+  },
+  {
+    name: 'ICICI Lombard Platinum', category: 'Motor', price: '₹2.8 Lakhs', period: '/year',
+    coverage: '₹5 Crores', claimRatio: '99.2%', badge: 'Best Value', color: 'from-orange-500 to-red-500',
+    features: ['Return to Invoice', 'Zero Depreciation', 'Key Replacement', 'NCB Protection', 'Daily Conveyance'],
+  },
+  {
+    name: 'BimaKavach Exotic Fleet', category: 'Motor', price: '₹6.5 Lakhs', period: '/year',
+    coverage: '₹25 Crores', claimRatio: '100%', badge: 'Hypercar Ready', color: 'from-teal to-ins-blue',
     features: ['Agreed Value Settlement', 'OEM Parts Guarantee', 'Global Transit', 'Return to Invoice', 'Engine Protection'],
   },
 
   // Home
   {
-    name: 'Estate & Art Shield', category: 'Home', price: '₹8.5 Lakhs', period: '/year',
-    coverage: '₹50 Crores', claimRatio: '98%', badge: 'Premium Villas', color: 'from-purple-400 to-violet-500',
+    name: 'SBI General Home', category: 'Home', price: '₹45,000', period: '/year',
+    coverage: '₹5 Crores', claimRatio: '96%', badge: null, color: 'from-blue-400 to-blue-600',
+    features: ['Structure Cover', 'Contents Cover', 'Fire & Perils', 'Burglary', null],
+  },
+  {
+    name: 'Bajaj Allianz My Home', category: 'Home', price: '₹1.5 Lakhs', period: '/year',
+    coverage: '₹20 Crores', claimRatio: '98.5%', badge: 'Popular', color: 'from-sky-400 to-sky-600',
+    features: ['Structure & Contents', 'Valuables & Jewelry', 'Terrorism Cover', 'Alternative Stay', 'Public Liability'],
+  },
+  {
+    name: 'BimaKavach Estate Shield', category: 'Home', price: '₹8.5 Lakhs', period: '/year',
+    coverage: '₹100 Crores', claimRatio: '100%', badge: 'Premium Villas', color: 'from-purple-500 to-indigo-600',
     features: ['Fine Art & Jewelry', 'Staff Liability', 'Cyber Extortion', 'Alternative Stay', 'Natural Disasters'],
   },
 ]

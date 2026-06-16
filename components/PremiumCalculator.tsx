@@ -211,7 +211,7 @@ export default function PremiumCalculator() {
                 <div className="flex flex-col gap-3 mb-8">
                   <input 
                     type="tel"
-                    placeholder="Enter your VIP contact number"
+                    placeholder="Enter your number"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     className="w-full bg-white/80 border border-slate-200 rounded-xl py-3.5 px-4 text-navy font-medium focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal transition-all"
