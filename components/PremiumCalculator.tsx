@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { motion, AnimatePresence, useAnimation } from 'framer-motion'
 import { useForm, Controller } from 'react-hook-form'
 import { Calculator, ChevronDown, Activity, User, ShieldCheck, HeartPulse, Clock, Sparkles, MessageCircle, Phone, ArrowRight, ShieldAlert, BadgeCheck } from 'lucide-react'
@@ -60,10 +60,6 @@ const ADD_ONS = [
 
 export default function PremiumCalculator() {
   const [showBreakdown, setShowBreakdown] = useState(false)
-  const [premiumData, setPremiumData] = useState({
-    base: 0, ageAdj: 0, riskAdj: 0, addonCost: 0, discount: 0, finalYearly: 0, finalMonthly: 0, score: 0
-  })
-
   const { control, watch } = useForm<FormValues>({
     defaultValues: {
       type: 'Health Insurance',
@@ -79,11 +75,11 @@ export default function PremiumCalculator() {
   const formValues = watch()
 
   // --- Core Calculation Engine ---
-  useEffect(() => {
-    const { age, coverage, duration, smoker, medical, addons } = formValues
+  const premiumData = useMemo(() => {
+    const { age, coverage, duration, smoker, medical, addons, type } = formValues
 
     // Base calculation (approximate generic logic)
-    const baseRate = formValues.type === 'Life Insurance' ? 0.001 : 0.0015
+    const baseRate = type === 'Life Insurance' ? 0.001 : 0.0015
     const base = coverage * baseRate
 
     // Adjustments
@@ -124,9 +120,9 @@ export default function PremiumCalculator() {
     score += (activeAddons * 5)
     score = Math.min(100, Math.max(0, score))
 
-    setPremiumData({ base: Math.round(base), ageAdj: Math.round(ageAdj), riskAdj: Math.round(riskAdj), addonCost: Math.round(addonCost), discount: Math.round(discount), finalYearly, finalMonthly, score })
+    return { base: Math.round(base), ageAdj: Math.round(ageAdj), riskAdj: Math.round(riskAdj), addonCost: Math.round(addonCost), discount: Math.round(discount), finalYearly, finalMonthly, score }
 
-  }, [formValues])
+  }, [JSON.stringify(formValues)])
 
   // Helpers
   const formatINR = (val: number) => {
